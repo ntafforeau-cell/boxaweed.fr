@@ -23,7 +23,7 @@ body{
   margin-bottom:20px;
 }
 
-/* TEXTE SIGNATURE */
+/* SIGNATURE */
 .signature{
   max-width:90%;
   margin:0 auto 40px auto;
@@ -38,6 +38,59 @@ body{
   to{opacity:1; transform:translateY(0);}
 }
 
+/* HAMBURGER */
+.menu-hamburger{
+  width:35px;
+  height:30px;
+  position:fixed;
+  top:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1000;
+}
+
+.menu-hamburger div{
+  height:4px;
+  background:white;
+  border-radius:2px;
+}
+
+/* MENU HIDDEN BY DEFAULT */
+.menu{
+  position:fixed;
+  top:0;
+  right:-220px; 
+  height:100%;
+  width:220px;
+  background:#111;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:right 0.3s ease;
+  z-index:999;
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  margin:20px 0;
+  transition: color 0.3s;
+}
+
+.menu a:hover{
+  color:#ccc;
+}
+
+/* MENU VISIBLE */
+.menu.open{
+  right:0;
+}
+
 /* GALERIE HORIZONTALE */
 .gallery{
   overflow:hidden;
@@ -47,7 +100,7 @@ body{
 
 .gallery-track{
   display:flex;
-  animation:scroll 20s linear infinite; /* vitesse doublée */
+  animation:scroll 20s linear infinite; 
 }
 
 .gallery img{
@@ -60,7 +113,6 @@ body{
   cursor:pointer;
 }
 
-/* défilement horizontal */
 @keyframes scroll{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
@@ -85,6 +137,79 @@ body{
   width:100%;
   margin-bottom:20px;
   border-radius:10px;
+}
+
+/* SECTION BOUTIQUE */
+.boutique{
+  background:#111;
+  color:white;
+  padding:50px 0;
+}
+
+.boutique h2{
+  font-size:28px;
+  margin-bottom:40px;
+}
+
+.produits{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+}
+
+.produit{
+  background:#222;
+  padding:15px;
+  border-radius:10px;
+  max-width:220px;
+  text-align:center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produit img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.produit h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.produit p{
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.produit .desc{
+  font-size:14px;
+  font-style:italic;
+  margin:10px 0 15px 0;
+  line-height:1.5;
+  color:#ccc;
+}
+
+.produit .btn-commander{
+  display:inline-block;
+  padding:10px 20px;
+  color:white;
+  border:1px solid white;
+  text-decoration:none;
+  border-radius:8px;
+  transition: all 0.3s ease;
+}
+
+.produit .btn-commander:hover{
+  background:white;
+  color:black;
+  transform:scale(1.05);
+}
+
+.produit:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 15px rgba(255,255,255,0.2);
 }
 
 /* INSTAGRAM */
@@ -182,6 +307,16 @@ footer{
   height:220px;
 }
 
+.produit{
+  max-width:90%;
+}
+
+.produits{
+  flex-direction:column;
+  gap:25px;
+  align-items:center;
+}
+
 }
 
 /* Zoom alternatif mobile */
@@ -198,6 +333,19 @@ footer{
 <!-- LOGO -->
 <img src="Boxaweedsite/logo.png" class="logo">
 
+<!-- MENU HAMBURGER -->
+<div class="menu-hamburger" id="menuHamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<nav class="menu" id="menu">
+  <a href="#boutique">Boutique</a>
+  <a href="#vitrine">Mes créations</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 <!-- SIGNATURE -->
 <div class="signature">
 Je travaille uniquement avec du bois noble recyclé.<br>
@@ -212,20 +360,6 @@ Conçues pour traverser le temps.
 <div class="gallery">
 <div class="gallery-track">
 
-<img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
-
-<!-- doublons pour boucle -->
 <img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
 <img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
 <img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
@@ -261,6 +395,47 @@ Conçues pour traverser le temps.
   <img src="Boxaweedsite/creation12.jpg">
 </div>
 
+<!-- SECTION BOUTIQUE -->
+<section class="boutique" id="boutique">
+  <h2>Ma Boutique</h2>
+  <div class="produits">
+
+    <!-- PRODUIT 1 -->
+    <div class="produit">
+      <img src="Boxaweedsite/produit1.jpg" alt="Boîte Unique #1">
+      <h3>Boîte Unique #1</h3>
+      <p><strong>Prix :</strong> 49€</p>
+      <p><strong>Dimensions :</strong> 12 x 8 x 6 cm</p>
+      <p><strong>Essences de bois :</strong> Chêne & Noyer</p>
+      <p class="desc">Une boîte façonnée à la main, mélangeant le charme du chêne et la profondeur du noyer. Chaque veine raconte son histoire.</p>
+      <a href="https://www.paypal.com/paypalme/toncompte/49" target="_blank" class="btn-commander">Commander</a>
+    </div>
+
+    <!-- PRODUIT 2 -->
+    <div class="produit">
+      <img src="Boxaweedsite/produit2.jpg" alt="Boîte Unique #2">
+      <h3>Boîte Unique #2</h3>
+      <p><strong>Prix :</strong> 59€</p>
+      <p><strong>Dimensions :</strong> 14 x 9 x 7 cm</p>
+      <p><strong>Essences de bois :</strong> Noyer & Érable</p>
+      <p class="desc">Chaque courbe a été pensée pour révéler la beauté naturelle des essences. Une pièce unique à contempler et à utiliser.</p>
+      <a href="https://www.paypal.com/paypalme/toncompte/59" target="_blank" class="btn-commander">Commander</a>
+    </div>
+
+    <!-- PRODUIT 3 -->
+    <div class="produit">
+      <img src="Boxaweedsite/produit3.jpg" alt="Boîte Unique #3">
+      <h3>Boîte Unique #3</h3>
+      <p><strong>Prix :</strong> 65€</p>
+      <p><strong>Dimensions :</strong> 16 x 10 x 8 cm</p>
+      <p><strong>Essences de bois :</strong> Chêne & Cerisier</p>
+      <p class="desc">Un mariage subtil entre la robustesse du chêne et la chaleur du cerisier. Chaque boîte a sa propre âme, façonnée à la main.</p>
+      <a href="https://www.paypal.com/paypalme/toncompte/65" target="_blank" class="btn-commander">Commander</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- INSTAGRAM -->
 <a class="instagram-btn" href="https://www.instagram.com/boxaweed/" target="_blank">
 <img src="Boxaweedsite/logoinsta.png">
@@ -272,11 +447,11 @@ Conçues pour traverser le temps.
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer id="contact">
 Boxaweed 2026
 </footer>
 
-<!-- SCRIPT POUR VITRINE ET LIGHTBOX -->
+<!-- SCRIPT POUR VITRINE, LIGHTBOX ET HAMBURGER -->
 <script>
 /* AFFICHER / CACHER VITRINE */
 const btn = document.querySelector('.creations-btn');
@@ -309,6 +484,14 @@ function openZoom(img){
 
 zoomContainer.addEventListener('click', function(){
   zoomContainer.style.display = "none";
+});
+
+/* MENU HAMBURGER */
+const menuHamburger = document.getElementById('menuHamburger');
+const menu = document.getElementById('menu');
+
+menuHamburger.addEventListener('click', ()=>{
+  menu.classList.toggle('open');
 });
 </script>
 
