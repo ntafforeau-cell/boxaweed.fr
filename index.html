@@ -28,13 +28,15 @@ h1{
 /* SIGNATURE ANIMÉE */
 .signature p{
   opacity:0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
   margin-bottom:1em;
+  font-size:20px;
 }
 .signature p.visible{
   opacity:1;
   transform: translateY(0);
+  font-weight:500;
 }
 /* GALERIE HORIZONTALE */
 .gallery{
@@ -48,33 +50,20 @@ h1{
   border-radius:12px;
   cursor:pointer;
 }
-/* BOUTONS */
-.button{
-  margin:30px auto;
-  padding:15px 25px;
-  border:1px solid white;
-  display:inline-block;
-  border-radius:10px;
-  cursor:pointer;
-}
-.button:hover{
-  background:white;
-  color:black;
-}
-/* BOUTON INSTAGRAM */
+/* BOUTON INSTAGRAM (image + hover premium) */
 .instagram-btn{
-  margin:20px auto 40px auto;
-  padding:12px 20px;
-  border:1px solid white;
-  border-radius:10px;
-  display:inline-block;
+  display:block;
+  width:60px;
+  margin:30px auto 50px auto;
   cursor:pointer;
-  text-decoration:none;
-  color:white;
 }
-.instagram-btn:hover{
-  background:white;
-  color:black;
+.instagram-btn img{
+  width:100%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.instagram-btn img:hover{
+  transform: scale(1.15);
+  filter: brightness(1.2);
 }
 /* VITRINE */
 .vitrine{
@@ -140,6 +129,9 @@ footer{
   }
   .signature p{
     font-size:18px;
+  }
+  .instagram-btn{
+    width:50px;
   }
 }
 </style>
@@ -210,7 +202,7 @@ footer{
 
 <!-- BOUTON INSTAGRAM -->
 <a class="instagram-btn" href="https://www.instagram.com/tonprofil/" target="_blank">
-  Suivez-moi sur Instagram
+  <img src="Boxaweedsite/logoinsta.png" alt="Instagram">
 </a>
 
 <!-- VIDEO SHORT -->
