@@ -6,7 +6,6 @@
 <title>Boxaweed</title>
 
 <style>
-
 /* BASE */
 body{
   margin:0;
@@ -91,7 +90,6 @@ body{
   color:#ccc;
 }
 
-/* MENU VISIBLE */
 .menu.open{
   right:0;
 }
@@ -101,21 +99,24 @@ body{
   overflow:hidden;
   width:100%;
   margin-bottom:40px;
+  touch-action: pan-y;
 }
 
 .gallery-track{
   display:flex;
-  animation:scroll 20s linear infinite; 
+  width:max-content;
+  animation:scroll 30s linear infinite;
+  cursor:grab;
 }
 
-.gallery img{
+.gallery-track img{
   height:180px;
   width:auto;
   flex-shrink:0;
   margin:8px;
   border-radius:10px;
   object-fit:cover;
-  cursor:pointer;
+  user-select:none;
 }
 
 @keyframes scroll{
@@ -123,7 +124,7 @@ body{
   to{transform:translateX(-50%);}
 }
 
-/* BOUTONS MES CREATIONS / MA BOUTIQUE */
+/* BOUTONS */
 .creations-btn, .boutique-btn{
   display:inline-block;
   padding:15px 25px;
@@ -136,6 +137,7 @@ body{
 .vitrine{
   max-width:90%;
   margin:auto;
+  display:none;
 }
 
 .vitrine img{
@@ -149,7 +151,7 @@ body{
   background:#111;
   color:white;
   padding:50px 0;
-  display:none; /* cachée au départ */
+  display:none;
 }
 
 .boutique h2{
@@ -246,18 +248,9 @@ body{
 }
 
 @keyframes breathe{
-  0%{
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(255,255,255,0);
-  }
-  50%{
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255,255,255,0.25);
-  }
-  100%{
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(255,255,255,0);
-  }
+  0%{ transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50%{ transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.25); }
+  100%{ transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
 }
 
 /* VIDEO */
@@ -282,54 +275,14 @@ footer{
 
 /* MOBILE */
 @media(max-width:768px){
-
-.logo{
-  width:140px;
+  .logo{ width:140px; }
+  .signature{ font-size:22px; }
+  .gallery-track img{ height:120px; margin:6px; }
+  .instagram-btn{ width:90px; }
+  .video iframe{ height:220px; }
+  .produit{ max-width:90%; }
+  .produits{ flex-direction:column; gap:25px; align-items:center; }
 }
-
-.signature{
-  font-size:22px;
-}
-
-.gallery img{
-  height:120px;    
-  width:auto;
-  flex-shrink:0;
-  margin:6px;
-  object-fit:cover;
-  animation: zoomAlt 8s ease-in-out infinite;
-}
-
-.gallery img:nth-child(2n){
-  animation-delay: 4s;
-}
-
-.instagram-btn{
-  width:90px;
-}
-
-.video iframe{
-  height:220px;
-}
-
-.produit{
-  max-width:90%;
-}
-
-.produits{
-  flex-direction:column;
-  gap:25px;
-  align-items:center;
-}
-
-}
-
-/* Zoom alternatif mobile */
-@keyframes zoomAlt{
-  0%,100%{ transform: scale(1); }
-  50%{ transform: scale(1.1); }
-}
-
 </style>
 </head>
 
@@ -367,26 +320,41 @@ Conçues pour traverser le temps.
 
 <!-- GALERIE HORIZONTALE -->
 <div class="gallery">
-<div class="gallery-track">
+  <div class="gallery-track" id="galleryTrack">
 
-<img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
-<img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
+    <!-- Originales -->
+    <img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
 
+    <!-- Copies pour loop infinie -->
+    <img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
+    <img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
+
+  </div>
 </div>
-</div>
 
-<!-- VITRINE VERTICALE (cachée par défaut) -->
-<div class="vitrine" id="vitrine" style="display:none;">
+<!-- VITRINE VERTICALE -->
+<div class="vitrine" id="vitrine">
   <img src="Boxaweedsite/creation1.jpg">
   <img src="Boxaweedsite/creation2.jpg">
   <img src="Boxaweedsite/creation3.jpg">
@@ -405,8 +373,7 @@ Conçues pour traverser le temps.
 <section class="boutique" id="boutique">
   <h2>Ma Boutique</h2>
   <div class="produits">
-
-    <!-- PRODUIT 1 -->
+    <!-- Exemple Produit 1 -->
     <div class="produit">
       <img src="Boxaweedsite/produit1.jpg" alt="Boîte Unique #1">
       <h3>Boîte Unique #1</h3>
@@ -414,31 +381,8 @@ Conçues pour traverser le temps.
       <p><strong>Dimensions :</strong> 12 x 8 x 6 cm</p>
       <p><strong>Essences de bois :</strong> Chêne & Noyer</p>
       <p class="desc">Une boîte façonnée à la main, mélangeant le charme du chêne et la profondeur du noyer. Chaque veine raconte son histoire.</p>
-      <a href="https://www.paypal.com/paypalme/toncompte/49" target="_blank" class="btn-commander">Commander</a>
+      <a href="#" class="btn-commander">Commander</a>
     </div>
-
-    <!-- PRODUIT 2 -->
-    <div class="produit">
-      <img src="Boxaweedsite/produit2.jpg" alt="Boîte Unique #2">
-      <h3>Boîte Unique #2</h3>
-      <p><strong>Prix :</strong> 59€</p>
-      <p><strong>Dimensions :</strong> 14 x 9 x 7 cm</p>
-      <p><strong>Essences de bois :</strong> Noyer & Érable</p>
-      <p class="desc">Chaque courbe a été pensée pour révéler la beauté naturelle des essences. Une pièce unique à contempler et à utiliser.</p>
-      <a href="https://www.paypal.com/paypalme/toncompte/59" target="_blank" class="btn-commander">Commander</a>
-    </div>
-
-    <!-- PRODUIT 3 -->
-    <div class="produit">
-      <img src="Boxaweedsite/produit3.jpg" alt="Boîte Unique #3">
-      <h3>Boîte Unique #3</h3>
-      <p><strong>Prix :</strong> 65€</p>
-      <p><strong>Dimensions :</strong> 16 x 10 x 8 cm</p>
-      <p><strong>Essences de bois :</strong> Chêne & Cerisier</p>
-      <p class="desc">Un mariage subtil entre la robustesse du chêne et la chaleur du cerisier. Chaque boîte a sa propre âme, façonnée à la main.</p>
-      <a href="https://www.paypal.com/paypalme/toncompte/65" target="_blank" class="btn-commander">Commander</a>
-    </div>
-
   </div>
 </section>
 
@@ -457,12 +401,11 @@ Conçues pour traverser le temps.
 Boxaweed 2026
 </footer>
 
-<!-- SCRIPT POUR VITRINE, BOUTIQUE, LIGHTBOX ET HAMBURGER -->
+<!-- SCRIPT -->
 <script>
 /* AFFICHER / CACHER VITRINE */
 const btn = document.querySelector('.creations-btn');
 const vitrine = document.getElementById('vitrine');
-
 btn.addEventListener('click', () => {
   if(vitrine.style.display === "none"){
     vitrine.style.display = "block";
@@ -476,7 +419,6 @@ btn.addEventListener('click', () => {
 /* AFFICHER / CACHER BOUTIQUE */
 const boutiqueBtn = document.querySelector('.boutique-btn');
 const boutiqueSection = document.getElementById('boutique');
-
 boutiqueBtn.addEventListener('click', () => {
   if(boutiqueSection.style.display === "none" || boutiqueSection.style.display === ""){
     boutiqueSection.style.display = "block";
@@ -509,9 +451,50 @@ zoomContainer.addEventListener('click', function(){
 /* MENU HAMBURGER */
 const menuHamburger = document.getElementById('menuHamburger');
 const menu = document.getElementById('menu');
-
 menuHamburger.addEventListener('click', ()=>{
   menu.classList.toggle('open');
+});
+
+/* SCROLL MANUEL GALERIE */
+const galleryTrack = document.getElementById('galleryTrack');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+galleryTrack.addEventListener('mousedown', (e)=>{
+  isDown = true;
+  galleryTrack.style.cursor = 'grabbing';
+  startX = e.pageX - galleryTrack.offsetLeft;
+  scrollLeft = galleryTrack.scrollLeft;
+  galleryTrack.style.animationPlayState = 'paused';
+});
+
+galleryTrack.addEventListener('mouseleave', ()=>{isDown=false; galleryTrack.style.cursor='grab'; galleryTrack.style.animationPlayState='running';});
+galleryTrack.addEventListener('mouseup', ()=>{isDown=false; galleryTrack.style.cursor='grab'; galleryTrack.style.animationPlayState='running';});
+
+galleryTrack.addEventListener('mousemove', (e)=>{
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - galleryTrack.offsetLeft;
+  const walk = (x - startX) * 2;
+  galleryTrack.scrollLeft = scrollLeft - walk;
+});
+
+/* TOUCH SUR MOBILE */
+galleryTrack.addEventListener('touchstart', (e)=>{
+  startX = e.touches[0].pageX - galleryTrack.offsetLeft;
+  scrollLeft = galleryTrack.scrollLeft;
+  galleryTrack.style.animationPlayState = 'paused';
+});
+
+galleryTrack.addEventListener('touchmove', (e)=>{
+  const x = e.touches[0].pageX - galleryTrack.offsetLeft;
+  const walk = (x - startX) * 2;
+  galleryTrack.scrollLeft = scrollLeft - walk;
+});
+
+galleryTrack.addEventListener('touchend', ()=>{
+  galleryTrack.style.animationPlayState = 'running';
 });
 </script>
 
