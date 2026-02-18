@@ -4,211 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boxaweed</title>
+
 <style>
+
+/* BASE */
 body{
   margin:0;
-  font-family:Arial,sans-serif;
   background:black;
   color:white;
+  font-family:Arial, sans-serif;
   text-align:center;
-  overflow-x:hidden;
 }
-header{
-  padding:30px 20px 10px 20px;
-}
+
+/* LOGO */
 .logo{
-  width:140px;
-  margin:auto;
-  display:block;
+  width:180px;
+  margin-top:30px;
+  margin-bottom:20px;
 }
-h1{
-  font-size:28px;
-  margin:15px 0 5px 0;
-}
-/* SIGNATURE ANIMÉE */
-.signature p{
-  opacity:0;
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
-  margin-bottom:1em;
+
+/* TEXTE SIGNATURE */
+.signature{
+  max-width:90%;
+  margin:0 auto 40px auto;
   font-size:20px;
+  line-height:1.6;
+  opacity:0;
+  animation:fadeIn 2s ease forwards;
 }
-.signature p.visible{
-  opacity:1;
-  transform: translateY(0);
-  font-weight:500;
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
+
 /* GALERIE HORIZONTALE */
 .gallery{
-  display:flex;
-  gap:20px;
   overflow:hidden;
-  padding:30px 0;
+  width:100%;
+  margin-bottom:40px;
 }
+
+.gallery-track{
+  display:flex;
+  animation:scroll 40s linear infinite;
+}
+
 .gallery img{
-  height:220px;
-  border-radius:12px;
+  width:280px;
+  height:auto;
+  margin:10px;
+  border-radius:10px;
+}
+
+@keyframes scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* BOUTON MES CREATIONS */
+.creations-btn{
+  display:inline-block;
+  padding:15px 25px;
+  border:1px solid white;
+  margin:20px;
   cursor:pointer;
 }
-/* BOUTON INSTAGRAM (image + hover premium) */
+
+/* VITRINE */
+.vitrine{
+  max-width:90%;
+  margin:auto;
+}
+
+.vitrine img{
+  width:100%;
+  margin-bottom:20px;
+  border-radius:10px;
+}
+
+/* INSTAGRAM */
 .instagram-btn{
   display:block;
   width:100px;
-  margin:30px auto 50px auto;
+  margin:40px auto 60px auto;
   cursor:pointer;
 }
+
 .instagram-btn img{
   width:100%;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius:12px;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  animation: breathe 4s ease-in-out infinite;
 }
+
 .instagram-btn img:hover{
   transform: scale(1.15);
   filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
-/* VITRINE */
-.vitrine{
-  display:none;
-  flex-direction:column;
-  gap:20px;
-  padding:20px;
-}
-.vitrine img{
-  width:100%;
-  max-width:500px;
-  margin:auto;
-  border-radius:12px;
-  cursor:pointer;
-}
-/* VIDEO SHORT */
-.video-container{
-  position:relative;
-  width:90%;
-  max-width:500px;
-  margin:60px auto;
-  padding-bottom:177%;
-  height:0;
-}
-.video-container iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  border-radius:12px;
-}
-/* LIGHTBOX */
-.lightbox{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-.lightbox img{
-  max-width:95%;
-  max-height:95%;
-}
-/* FOOTER */
-footer{
-  margin:50px 0 30px 0;
-  font-size:14px;
-  color:grey;
-}
-/* MOBILE */
-@media(max-width:768px){
-  .gallery img{
-    height:180px;
-  }
-  h1{
-    font-size:24px;
-  }
-  .signature p{
-    font-size:18px;
-  }
-  .instagram-btn{
-    width:50px;
-  }
-}
-</style>
-</head>
-<body>
 
-<header>
-  <img src="Boxaweedsite/logo.png" class="logo">
-  <h1>Boxaweed</h1>
-  <div class="signature">
-    <p>Je travaille uniquement avec du bois noble recyclé.</p>
-    <p>Des fragments voués à disparaître, que je transforme avec patience.</p>
-    <p>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</p>
-    <p>Elles sont toutes uniques et numérotées.</p>
-    <p>Conçues pour durer.<br>Conçues pour traverser le temps.</p>
-  </div>
-</header>
-
-<!-- GALERIE HORIZONTALE -->
-<div class="gallery" id="gallery">
-  <img src="Boxaweedsite/boite1.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite2.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite3.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite4.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite5.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite6.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite7.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite8.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite9.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite10.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite11.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite12.jpg" onclick="openLightbox(this.src)">
-  <!-- doublons pour scroll infini -->
-  <img src="Boxaweedsite/boite1.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite2.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite3.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite4.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite5.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite6.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite7.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite8.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite9.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite10.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite11.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/boite12.jpg" onclick="openLightbox(this.src)">
-</div>
-
-<!-- BOUTON -->
-<div class="button" onclick="toggleVitrine()">
-  Mes créations
-</div>
-
-<!-- VITRINE -->
-<div class="vitrine" id="vitrine">
-  <img src="Boxaweedsite/creation1.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation2.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation3.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation4.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation5.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation6.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation7.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation8.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation9.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation10.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation11.jpg" onclick="openLightbox(this.src)">
-  <img src="Boxaweedsite/creation12.jpg" onclick="openLightbox(this.src)">
-</div>
-
-<!-- BOUTON INSTAGRAM -->
-<a class="instagram-btn" href="https://www.instagram.com/tonprofil/" target="_blank">
-  <img src="Boxaweedsite/logoinsta.png" alt="Instagram">
-</a>
-.instagram-btn img{
-  width:100%;
-  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-  border-radius:12px;
-  animation: breathe 4s ease-in-out infinite;
+.instagram-btn img:active{
+  transform: scale(1.15);
+  filter: brightness(1.2);
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
 }
 
 @keyframes breathe{
@@ -225,85 +124,138 @@ footer{
     box-shadow: 0 0 0 rgba(255,255,255,0);
   }
 }
-<!-- VIDEO SHORT -->
-<div class="video-container">
-  <iframe
-    src="https://www.youtube.com/embed/T6Jra2Oojnw"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
+
+/* VIDEO */
+.video{
+  margin:40px auto;
+  max-width:90%;
+}
+
+.video iframe{
+  width:100%;
+  height:400px;
+  border:none;
+  border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+  margin:40px 0;
+  color:grey;
+  font-size:14px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.logo{
+  width:140px;
+}
+
+.signature{
+  font-size:22px;
+}
+
+.gallery img{
+  width:220px;
+}
+
+.instagram-btn{
+  width:90px;
+}
+
+.video iframe{
+  height:220px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<img src="Boxaweedsite/logo.png" class="logo">
+
+<!-- SIGNATURE -->
+<div class="signature">
+Je travaille uniquement avec du bois noble recyclé.<br>
+Des fragments voués à disparaître, que je transforme avec patience.<br><br>
+Chaque pièce est façonnée à la main, sans modèle, sans répétition.<br><br>
+Elles sont toutes uniques et numérotées.<br><br>
+Conçues pour durer.<br>
+Conçues pour traverser le temps.
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
+<!-- GALERIE -->
+<div class="gallery">
+<div class="gallery-track">
+
+<img src="Boxaweedsite/boite1.jpg">
+<img src="Boxaweedsite/boite2.jpg">
+<img src="Boxaweedsite/boite3.jpg">
+<img src="Boxaweedsite/boite4.jpg">
+<img src="Boxaweedsite/boite5.jpg">
+<img src="Boxaweedsite/boite6.jpg">
+<img src="Boxaweedsite/boite7.jpg">
+<img src="Boxaweedsite/boite8.jpg">
+<img src="Boxaweedsite/boite9.jpg">
+<img src="Boxaweedsite/boite10.jpg">
+<img src="Boxaweedsite/boite11.jpg">
+<img src="Boxaweedsite/boite12.jpg">
+
+<!-- doublons pour boucle -->
+<img src="Boxaweedsite/boite1.jpg">
+<img src="Boxaweedsite/boite2.jpg">
+<img src="Boxaweedsite/boite3.jpg">
+<img src="Boxaweedsite/boite4.jpg">
+<img src="Boxaweedsite/boite5.jpg">
+<img src="Boxaweedsite/boite6.jpg">
+<img src="Boxaweedsite/boite7.jpg">
+<img src="Boxaweedsite/boite8.jpg">
+<img src="Boxaweedsite/boite9.jpg">
+<img src="Boxaweedsite/boite10.jpg">
+<img src="Boxaweedsite/boite11.jpg">
+<img src="Boxaweedsite/boite12.jpg">
+
+</div>
+</div>
+
+<!-- MES CREATIONS -->
+<div class="creations-btn">Mes créations</div>
+
+<div class="vitrine">
+
+<img src="Boxaweedsite/creation1.jpg">
+<img src="Boxaweedsite/creation2.jpg">
+<img src="Boxaweedsite/creation3.jpg">
+<img src="Boxaweedsite/creation4.jpg">
+<img src="Boxaweedsite/creation5.jpg">
+<img src="Boxaweedsite/creation6.jpg">
+<img src="Boxaweedsite/creation7.jpg">
+<img src="Boxaweedsite/creation8.jpg">
+<img src="Boxaweedsite/creation9.jpg">
+<img src="Boxaweedsite/creation10.jpg">
+<img src="Boxaweedsite/creation11.jpg">
+<img src="Boxaweedsite/creation12.jpg">
+
+</div>
+
+<!-- INSTAGRAM -->
+<a class="instagram-btn" href="https://www.instagram.com/boxaweed/" target="_blank">
+<img src="Boxaweedsite/logoinsta.png">
+</a>
+
+<!-- VIDEO -->
+<div class="video">
+<iframe src="https://www.youtube.com/embed/T6Jra2Oojnw"></iframe>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  Boxaweed 2026
+Boxaweed 2026
 </footer>
-
-<script>
-// SCROLL AUTO
-const gallery=document.getElementById('gallery');
-let scrollAmount=0;
-function autoScroll(){
-  scrollAmount+=0.3;
-  gallery.scrollLeft=scrollAmount;
-  if(scrollAmount>=gallery.scrollWidth/2){ scrollAmount=0; }
-  requestAnimationFrame(autoScroll);
-}
-autoScroll();
-
-// VITRINE
-function toggleVitrine(){
-  const vitrine=document.getElementById("vitrine");
-  if(vitrine.style.display=="flex"){ vitrine.style.display="none"; }
-  else{ vitrine.style.display="flex"; }
-}
-
-// LIGHTBOX
-let images=[];
-let currentIndex=0;
-function initLightboxGallery(){
-  images=Array.from(document.querySelectorAll(".gallery img, .vitrine img"));
-}
-function openLightbox(src){
-  initLightboxGallery();
-  currentIndex=images.findIndex(img=>img.src.includes(src));
-  document.getElementById("lightbox").style.display="flex";
-  document.getElementById("lightbox-img").src=src;
-}
-function closeLightbox(){
-  document.getElementById("lightbox").style.display="none";
-}
-function showImage(index){
-  if(index<0) index=images.length-1;
-  if(index>=images.length) index=0;
-  currentIndex=index;
-  document.getElementById("lightbox-img").src=images[currentIndex].src;
-}
-
-// SWIPE
-let startX=0;
-document.getElementById("lightbox").addEventListener("touchstart",e=>{
-  startX=e.touches[0].clientX;
-});
-document.getElementById("lightbox").addEventListener("touchend",e=>{
-  let endX=e.changedTouches[0].clientX;
-  if(endX<startX-50) showImage(currentIndex+1);
-  if(endX>startX+50) showImage(currentIndex-1);
-});
-
-// FADE-IN SIGNATURE
-window.addEventListener('load', () => {
-  const lines = document.querySelectorAll('.signature p');
-  lines.forEach((line, index) => {
-    setTimeout(() => { line.classList.add('visible'); }, index * 700);
-  });
-});
-</script>
 
 </body>
 </html>
