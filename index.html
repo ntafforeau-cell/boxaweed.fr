@@ -51,10 +51,12 @@ body{
 }
 
 .gallery img{
-  width:280px;
-  height:auto;
-  margin:10px;
+  height:180px;      /* hauteur uniforme */
+  width:auto;        /* conserve les proportions */
+  flex-shrink:0;
+  margin:8px;
   border-radius:10px;
+  object-fit:cover;  /* recadrage propre */
 }
 
 @keyframes scroll{
@@ -71,7 +73,7 @@ body{
   cursor:pointer;
 }
 
-/* VITRINE */
+/* VITRINE VERTICALE */
 .vitrine{
   max-width:90%;
   margin:auto;
@@ -157,9 +159,12 @@ footer{
 }
 
 .gallery img{
-  width:160px;
+  height:120px;    /* hauteur mobile réduite */
+  width:auto;
   flex-shrink:0;
-  }
+  margin:6px;
+  object-fit:cover;
+}
 
 .instagram-btn{
   width:90px;
@@ -189,7 +194,7 @@ Conçues pour durer.<br>
 Conçues pour traverser le temps.
 </div>
 
-<!-- GALERIE -->
+<!-- GALERIE HORIZONTALE -->
 <div class="gallery">
 <div class="gallery-track">
 
