@@ -40,8 +40,8 @@ body{
 
 /* HAMBURGER */
 .menu-hamburger{
-  width:35px;
-  height:30px;
+  width:40px;   
+  height:35px;  
   position:fixed;
   top:20px;
   right:20px;
@@ -53,9 +53,14 @@ body{
 }
 
 .menu-hamburger div{
-  height:4px;
-  background:white;
-  border-radius:2px;
+  height:5px;              
+  background:#ffffff;      
+  border-radius:3px;
+  transition: all 0.3s ease;
+}
+
+.menu-hamburger:hover div{
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
 }
 
 /* MENU HIDDEN BY DEFAULT */
@@ -118,12 +123,12 @@ body{
   to{transform:translateX(-50%);}
 }
 
-/* BOUTON MES CREATIONS */
-.creations-btn{
+/* BOUTONS MES CREATIONS / MA BOUTIQUE */
+.creations-btn, .boutique-btn{
   display:inline-block;
   padding:15px 25px;
   border:1px solid white;
-  margin:20px;
+  margin:10px;
   cursor:pointer;
 }
 
@@ -144,6 +149,7 @@ body{
   background:#111;
   color:white;
   padding:50px 0;
+  display:none; /* cachée au départ */
 }
 
 .boutique h2{
@@ -285,7 +291,6 @@ footer{
   font-size:22px;
 }
 
-/* bande défilante mobile avec zoom alternatif */
 .gallery img{
   height:120px;    
   width:auto;
@@ -356,6 +361,10 @@ Conçues pour durer.<br>
 Conçues pour traverser le temps.
 </div>
 
+<!-- BOUTONS -->
+<div class="creations-btn">Mes créations</div>
+<div class="boutique-btn">Ma Boutique</div>
+
 <!-- GALERIE HORIZONTALE -->
 <div class="gallery">
 <div class="gallery-track">
@@ -375,9 +384,6 @@ Conçues pour traverser le temps.
 
 </div>
 </div>
-
-<!-- BOUTON MES CREATIONS -->
-<div class="creations-btn">Mes créations</div>
 
 <!-- VITRINE VERTICALE (cachée par défaut) -->
 <div class="vitrine" id="vitrine" style="display:none;">
@@ -451,7 +457,7 @@ Conçues pour traverser le temps.
 Boxaweed 2026
 </footer>
 
-<!-- SCRIPT POUR VITRINE, LIGHTBOX ET HAMBURGER -->
+<!-- SCRIPT POUR VITRINE, BOUTIQUE, LIGHTBOX ET HAMBURGER -->
 <script>
 /* AFFICHER / CACHER VITRINE */
 const btn = document.querySelector('.creations-btn');
@@ -464,6 +470,20 @@ btn.addEventListener('click', () => {
   } else {
     vitrine.style.display = "none";
     btn.innerText = "Mes créations";
+  }
+});
+
+/* AFFICHER / CACHER BOUTIQUE */
+const boutiqueBtn = document.querySelector('.boutique-btn');
+const boutiqueSection = document.getElementById('boutique');
+
+boutiqueBtn.addEventListener('click', () => {
+  if(boutiqueSection.style.display === "none" || boutiqueSection.style.display === ""){
+    boutiqueSection.style.display = "block";
+    boutiqueBtn.innerText = "Fermer la boutique";
+  } else {
+    boutiqueSection.style.display = "none";
+    boutiqueBtn.innerText = "Ma Boutique";
   }
 });
 
