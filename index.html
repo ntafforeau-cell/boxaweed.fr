@@ -47,18 +47,20 @@ body{
 
 .gallery-track{
   display:flex;
-  animation:scroll 40s linear infinite;
+  animation:scroll 20s linear infinite; /* vitesse doublée */
 }
 
 .gallery img{
-  height:180px;      /* hauteur uniforme */
-  width:auto;        /* conserve les proportions */
+  height:180px;
+  width:auto;
   flex-shrink:0;
   margin:8px;
   border-radius:10px;
-  object-fit:cover;  /* recadrage propre */
+  object-fit:cover;
+  cursor:pointer;
 }
 
+/* défilement horizontal */
 @keyframes scroll{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
@@ -158,12 +160,18 @@ footer{
   font-size:22px;
 }
 
+/* bande défilante mobile avec zoom alternatif */
 .gallery img{
-  height:120px;    /* hauteur mobile réduite */
+  height:120px;    
   width:auto;
   flex-shrink:0;
   margin:6px;
   object-fit:cover;
+  animation: zoomAlt 8s ease-in-out infinite;
+}
+
+.gallery img:nth-child(2n){
+  animation-delay: 4s;
 }
 
 .instagram-btn{
@@ -174,6 +182,12 @@ footer{
   height:220px;
 }
 
+}
+
+/* Zoom alternatif mobile */
+@keyframes zoomAlt{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.1); }
 }
 
 </style>
@@ -198,54 +212,53 @@ Conçues pour traverser le temps.
 <div class="gallery">
 <div class="gallery-track">
 
-<img src="Boxaweedsite/boite1.jpg">
-<img src="Boxaweedsite/boite2.jpg">
-<img src="Boxaweedsite/boite3.jpg">
-<img src="Boxaweedsite/boite4.jpg">
-<img src="Boxaweedsite/boite5.jpg">
-<img src="Boxaweedsite/boite6.jpg">
-<img src="Boxaweedsite/boite7.jpg">
-<img src="Boxaweedsite/boite8.jpg">
-<img src="Boxaweedsite/boite9.jpg">
-<img src="Boxaweedsite/boite10.jpg">
-<img src="Boxaweedsite/boite11.jpg">
-<img src="Boxaweedsite/boite12.jpg">
+<img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
 
 <!-- doublons pour boucle -->
-<img src="Boxaweedsite/boite1.jpg">
-<img src="Boxaweedsite/boite2.jpg">
-<img src="Boxaweedsite/boite3.jpg">
-<img src="Boxaweedsite/boite4.jpg">
-<img src="Boxaweedsite/boite5.jpg">
-<img src="Boxaweedsite/boite6.jpg">
-<img src="Boxaweedsite/boite7.jpg">
-<img src="Boxaweedsite/boite8.jpg">
-<img src="Boxaweedsite/boite9.jpg">
-<img src="Boxaweedsite/boite10.jpg">
-<img src="Boxaweedsite/boite11.jpg">
-<img src="Boxaweedsite/boite12.jpg">
+<img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
+<img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
 
 </div>
 </div>
 
-<!-- MES CREATIONS -->
+<!-- BOUTON MES CREATIONS -->
 <div class="creations-btn">Mes créations</div>
 
-<div class="vitrine">
-
-<img src="Boxaweedsite/creation1.jpg">
-<img src="Boxaweedsite/creation2.jpg">
-<img src="Boxaweedsite/creation3.jpg">
-<img src="Boxaweedsite/creation4.jpg">
-<img src="Boxaweedsite/creation5.jpg">
-<img src="Boxaweedsite/creation6.jpg">
-<img src="Boxaweedsite/creation7.jpg">
-<img src="Boxaweedsite/creation8.jpg">
-<img src="Boxaweedsite/creation9.jpg">
-<img src="Boxaweedsite/creation10.jpg">
-<img src="Boxaweedsite/creation11.jpg">
-<img src="Boxaweedsite/creation12.jpg">
-
+<!-- VITRINE VERTICALE (cachée par défaut) -->
+<div class="vitrine" id="vitrine" style="display:none;">
+  <img src="Boxaweedsite/creation1.jpg">
+  <img src="Boxaweedsite/creation2.jpg">
+  <img src="Boxaweedsite/creation3.jpg">
+  <img src="Boxaweedsite/creation4.jpg">
+  <img src="Boxaweedsite/creation5.jpg">
+  <img src="Boxaweedsite/creation6.jpg">
+  <img src="Boxaweedsite/creation7.jpg">
+  <img src="Boxaweedsite/creation8.jpg">
+  <img src="Boxaweedsite/creation9.jpg">
+  <img src="Boxaweedsite/creation10.jpg">
+  <img src="Boxaweedsite/creation11.jpg">
+  <img src="Boxaweedsite/creation12.jpg">
 </div>
 
 <!-- INSTAGRAM -->
@@ -262,6 +275,42 @@ Conçues pour traverser le temps.
 <footer>
 Boxaweed 2026
 </footer>
+
+<!-- SCRIPT POUR VITRINE ET LIGHTBOX -->
+<script>
+/* AFFICHER / CACHER VITRINE */
+const btn = document.querySelector('.creations-btn');
+const vitrine = document.getElementById('vitrine');
+
+btn.addEventListener('click', () => {
+  if(vitrine.style.display === "none"){
+    vitrine.style.display = "block";
+    btn.innerText = "Fermer la vitrine";
+  } else {
+    vitrine.style.display = "none";
+    btn.innerText = "Mes créations";
+  }
+});
+
+/* LIGHTBOX ZOOM */
+const zoomContainer = document.createElement('div');
+zoomContainer.id = "zoomContainer";
+zoomContainer.style.cssText = "display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:9999;cursor:pointer;";
+const zoomImage = document.createElement('img');
+zoomImage.id = "zoomImage";
+zoomImage.style.cssText = "max-width:90%;max-height:90%;border-radius:10px;";
+zoomContainer.appendChild(zoomImage);
+document.body.appendChild(zoomContainer);
+
+function openZoom(img){
+  zoomImage.src = img.src;
+  zoomContainer.style.display = "flex";
+}
+
+zoomContainer.addEventListener('click', function(){
+  zoomContainer.style.display = "none";
+});
+</script>
 
 </body>
 </html>
