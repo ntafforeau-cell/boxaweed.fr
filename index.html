@@ -204,7 +204,27 @@ footer{
 <a class="instagram-btn" href="https://www.instagram.com/tonprofil/" target="_blank">
   <img src="Boxaweedsite/logoinsta.png" alt="Instagram">
 </a>
+.instagram-btn img{
+  width:100%;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  border-radius:12px;
+  animation: breathe 4s ease-in-out infinite;
+}
 
+@keyframes breathe{
+  0%{
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+  50%{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.25);
+  }
+  100%{
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+}
 <!-- VIDEO SHORT -->
 <div class="video-container">
   <iframe
