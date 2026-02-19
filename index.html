@@ -3,428 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Boxaweed</title>
-
 <style>
+/* ===== STYLE GENERAL ===== */
+body { margin:0; font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
+h1,h2,h3 { margin:10px 0; }
+p { margin:5px 0; }
+a { color:#fff; text-decoration:none; }
 
-body{
-margin:0;
-background:black;
-color:white;
-font-family:Arial, sans-serif;
-text-align:center;
-overflow-x:hidden;
+/* ===== HAMBURGER ===== */
+.hamburger { position:fixed; top:10px; right:10px; cursor:pointer; z-index:1000; width:30px; height:25px; display:flex; flex-direction:column; justify-content:space-between; }
+.hamburger div { width:30px; height:4px; background:#fff; }
+
+/* ===== MENU HAMBURGER ===== */
+.menu { display:none; position:fixed; top:50px; right:10px; background:#111; border:1px solid #444; padding:10px; z-index:999; text-align:right; }
+.menu button { display:block; margin:5px 0; }
+
+/* ===== TEXTE INTRODUCTION ===== */
+#intro { max-width:600px; margin:60px auto 20px; text-align:center; line-height:1.5em; padding:0 20px; }
+#intro p { text-shadow:0 0 3px #fff, 0 0 6px #fff; }
+
+/* ===== BOUTON CREER MA BOITE ===== */
+#commande { margin:20px auto; text-align:center; }
+#commande p { font-size:1.1em; max-width:600px; margin:0 auto; line-height:1.5em; }
+#commande button { margin-top:15px; background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; transition:0.3s; }
+#commande button:hover { background:#444; }
+
+/* ===== BANDE HORIZONTALE ===== */
+.bande-defilante { display:flex; overflow:hidden; white-space:nowrap; margin:20px 0; }
+.bande-defilante img { width:150px; height:150px; object-fit:cover; margin-right:10px; transition:transform 0.3s; cursor:pointer; }
+.bande-defilante img:hover { transform:scale(1.2); }
+
+/* ===== VITRINE MES CREATIONS ===== */
+#creations { display:none; padding:20px; text-align:center; }
+#creations img { width:200px; height:200px; object-fit:cover; margin:10px; transition:transform 0.3s; cursor:pointer; }
+#creations img:hover { transform:scale(1.1); }
+
+/* ===== BOUTIQUE ===== */
+#boutique { display:none; padding:20px; text-align:center; }
+.produit { margin-bottom:40px; border-bottom:1px solid #ccc; padding-bottom:20px; }
+.galerie { display:flex; flex-direction:column; align-items:center; }
+.modal-main { width:300px; max-width:90%; margin-bottom:10px; }
+.miniatures { display:flex; gap:5px; justify-content:center; }
+.miniatures img { width:50px; height:50px; object-fit:cover; cursor:pointer; transition:0.3s; }
+.miniatures img:hover { transform:scale(1.2); }
+
+/* ===== FOOTER ===== */
+footer { margin-top:40px; font-size:0.9em; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:600px) {
+  .modal-main { width:90%; }
+  .miniatures img { width:40px; height:40px; }
+  .bande-defilante img { width:100px; height:100px; }
+  #creations img { width:120px; height:120px; }
 }
-
-/* LOGO */
-
-.logo{
-width:220px;
-margin-top:20px;
-}
-
-/* TEXTE IMMERSIF */
-
-.intro{
-font-size:28px;
-margin:30px 20px;
-opacity:0;
-animation:introFade 2s ease forwards;
-text-shadow:0 0 6px white;
-}
-
-@keyframes introFade{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* BOUTONS */
-
-.button{
-display:block;
-margin:20px auto;
-padding:15px 30px;
-border:2px solid white;
-background:black;
-color:white;
-font-size:20px;
-cursor:pointer;
-width:220px;
-}
-
-.button:hover{
-background:white;
-color:black;
-}
-
-/* HAMBURGER */
-
-.hamburger{
-position:fixed;
-top:20px;
-right:20px;
-font-size:30px;
-cursor:pointer;
-z-index:1000;
-}
-
-.menu{
-display:none;
-position:fixed;
-top:60px;
-right:20px;
-background:black;
-border:1px solid white;
-padding:10px;
-}
-
-.menu a{
-display:block;
-color:white;
-text-decoration:none;
-margin:10px;
-}
-
-/* GALERIE CREATIONS */
-
-.creations{
-display:none;
-flex-direction:column;
-align-items:center;
-}
-
-.creations img{
-width:90%;
-max-width:500px;
-margin:15px;
-cursor:pointer;
-}
-
-/* BANDE FILANTE */
-
-.scroll-container{
-overflow:hidden;
-white-space:nowrap;
-margin-top:20px;
-}
-
-.scroll{
-display:inline-block;
-animation:scroll 40s linear infinite;
-}
-
-.scroll img{
-height:160px;
-margin:10px;
-cursor:pointer;
-transition:transform 0.5s;
-}
-
-.scroll img:hover{
-transform:scale(1.1);
-}
-
-@keyframes scroll{
-from{
-transform:translateX(0);
-}
-to{
-transform:translateX(-50%);
-}
-}
-
-/* BOUTIQUE */
-
-.shop{
-display:none;
-}
-
-.product{
-margin:40px;
-}
-
-.product img{
-width:90%;
-max-width:400px;
-}
-
-/* INSTAGRAM */
-
-.insta{
-width:90px;
-margin:40px auto;
-animation:breath 3s infinite;
-}
-
-@keyframes breath{
-0%{transform:scale(1);}
-50%{transform:scale(1.15);}
-100%{transform:scale(1);}
-}
-
-/* VIDEO */
-
-.video{
-width:90%;
-max-width:400px;
-margin:40px auto;
-}
-
-.video iframe{
-width:100%;
-height:500px;
-}
-
-/* SIGNATURE */
-
-.signature{
-margin:50px;
-opacity:0.6;
-}
-
 </style>
 </head>
-
 <body>
 
-<!-- HAMBURGER -->
+<!-- ===== LOGO ===== -->
+<img src="logo.png" alt="Boxaweed Logo" style="width:150px; margin-top:10px;">
 
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
-<div class="menu" id="menu">
-
-<a href="#" onclick="toggleCreations()">Mes créations</a>
-
-<a href="#" onclick="toggleShop()">Ma boutique</a>
-
-<a href="mailto:ntafforeau@gmail.com">Créer ma boîte</a>
-
+<!-- ===== HAMBURGER ===== -->
+<div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<div class="menu" id="menuHamburger">
+  <button onclick="scrollToSection('commande')">Créer ma boîte</button>
+  <button onclick="toggleCreations()">Mes Créations</button>
+  <button onclick="toggleBoutique()">Ma Boutique</button>
+  <button onclick="window.location.href='https://www.instagram.com/boxaweed'">Instagram</button>
+  <button onclick="scrollToSection('youtube')">Vidéo YouTube</button>
 </div>
 
-<!-- LOGO -->
-
-<img src="boxaweedsite/logo.png" class="logo">
-
-<!-- TEXTE -->
-
-<div class="intro">
-
-Créations artisanales uniques et personnalisables
-
+<!-- ===== TEXTE INTRODUCTION ===== -->
+<div id="intro">
+  <p>Je vous présente mes créations fabriquées essentiellement avec du bois noble. Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs. Je les transforme et revalorise avec patience et passion.</p>
+  <p>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</p>
+  <p>Elles sont toutes uniques et numérotées.</p>
+  <p>Conçues pour durer. Conçues pour traverser le temps.</p>
 </div>
 
-<!-- BOUTON CREER -->
-
-<button class="button"
-onclick="location.href='mailto:ntafforeau@gmail.com'">
-
-Créer ma boîte
-
-</button>
-
-<!-- BOUTON CREATIONS -->
-
-<button class="button"
-onclick="toggleCreations()">
-
-Mes créations
-
-</button>
-
-<div class="creations" id="creations"></div>
-
-<!-- BANDE FILANTE -->
-
-<div class="scroll-container">
-
-<div class="scroll" id="scroll"></div>
-
+<!-- ===== TEXTE + BOUTON CREER MA BOITE ===== -->
+<div id="commande">
+  <p>
+    Chaque création peut être <strong>réalisée sur commande</strong>, entièrement <strong>personnalisée</strong> selon vos envies (dans la limite du réalisable). Contactez-moi pour discuter de votre projet !
+  </p>
+  <button onclick="window.location.href='mailto:ntafforeau@gmail.com?subject=Création personnalisée Boxaweed'">
+    Créer ma boîte / Personnaliser ma boîte
+  </button>
 </div>
 
-<!-- BOUTIQUE -->
+<!-- ===== BOUTON MES CREATIONS ===== -->
+<button onclick="toggleCreations()">Mes Créations</button>
 
-<button class="button"
-onclick="toggleShop()">
+<!-- ===== VITRINE MES CREATIONS ===== -->
+<section id="creations">
+  <img src="Boxaweedsite/creation1.jpg">
+  <img src="Boxaweedsite/creation2.jpg">
+  <img src="Boxaweedsite/creation3.jpg">
+  <img src="Boxaweedsite/creation4.jpg">
+  <img src="Boxaweedsite/creation5.jpg">
+  <img src="Boxaweedsite/creation6.jpg">
+  <img src="Boxaweedsite/creation7.jpg">
+  <img src="Boxaweedsite/creation8.jpg">
+  <img src="Boxaweedsite/creation9.jpg">
+  <img src="Boxaweedsite/creation10.jpg">
+  <img src="Boxaweedsite/creation11.jpg">
+  <img src="Boxaweedsite/creation12.jpg">
+</section>
 
-Ma boutique
+<!-- ===== BANDE DEFILANTE ===== -->
+<div class="bande-defilante">
+  <img src="Boxaweedsite/boite1.jpg">
+  <img src="Boxaweedsite/boite2.jpg">
+  <img src="Boxaweedsite/boite3.jpg">
+  <img src="Boxaweedsite/boite4.jpg">
+  <img src="Boxaweedsite/boite5.jpg">
+  <img src="Boxaweedsite/boite6.jpg">
+  <img src="Boxaweedsite/boite7.jpg">
+  <img src="Boxaweedsite/boite8.jpg">
+  <img src="Boxaweedsite/boite9.jpg">
+  <img src="Boxaweedsite/boite10.jpg">
+  <img src="Boxaweedsite/boite11.jpg">
+  <img src="Boxaweedsite/boite12.jpg">
+</div>
 
-</button>
+<!-- ===== BOUTON MA BOUTIQUE ===== -->
+<button onclick="toggleBoutique()">Ma Boutique</button>
 
-<div class="shop" id="shop"></div>
+<!-- ===== BOUTIQUE ===== -->
+<section id="boutique">
+  <!-- PRODUIT 1 -->
+  <div class="produit">
+    <h3>Boxaweed N°38</h3>
+    <p><strong>Prix :</strong> 85€</p>
+    <p><strong>Dimensions :</strong> 17,5cm × 17,5cm × 24cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit1.jpg" id="mainImage1" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit1.jpg" onclick="changeImage(1,this)">
+        <img src="Boxaweedsite/produit2.jpg" onclick="changeImage(1,this)">
+        <img src="Boxaweedsite/produit3.jpg" onclick="changeImage(1,this)">
+        <img src="Boxaweedsite/produit4.jpg" onclick="changeImage(1,this)">
+        <img src="Boxaweedsite/produit5.jpg" onclick="changeImage(1,this)">
+      </div>
+    </div>
+    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/85'">Commander</button>
+  </div>
+  <!-- PRODUIT 2 -->
+  <div class="produit">
+    <h3>Boxaweed N°37</h3>
+    <p><strong>Prix :</strong> 65€</p>
+    <p><strong>Dimensions :</strong> 16cm × 16cm × 15,5cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit6.jpg" id="mainImage2" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit6.jpg" onclick="changeImage(2,this)">
+        <img src="Boxaweedsite/produit7.jpg" onclick="changeImage(2,this)">
+        <img src="Boxaweedsite/produit8.jpg" onclick="changeImage(2,this)">
+        <img src="Boxaweedsite/produit9.jpg" onclick="changeImage(2,this)">
+        <img src="Boxaweedsite/produit10.jpg" onclick="changeImage(2,this)">
+      </div>
+    </div>
+    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/65'">Commander</button>
+  </div>
+  <!-- PRODUIT 3 -->
+  <div class="produit">
+    <h3>Boxaweed N°36</h3>
+    <p><strong>Prix :</strong> 75€</p>
+    <p><strong>Dimensions :</strong> 18,5cm × 18,5cm × 27cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit11.jpg" id="mainImage3" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit11.jpg" onclick="changeImage(3,this)">
+        <img src="Boxaweedsite/produit12.jpg" onclick="changeImage(3,this)">
+      </div>
+    </div>
+    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/75'">Commander</button>
+  </div>
+</section>
 
-<!-- INSTAGRAM -->
-
-<a href="https://instagram.com" target="_blank">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-class="insta">
-
+<!-- ===== LOGO INSTAGRAM ===== -->
+<a href="https://www.instagram.com/boxaweed" target="_blank">
+  <img src="Boxaweedsite/logoinsta.png" alt="Instagram" style="width:50px; margin:20px; cursor:pointer;">
 </a>
 
-<!-- VIDEO -->
-
-<div class="video">
-
-<iframe
-src="https://www.youtube.com/embed/AR4yD9GrbuM"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
+<!-- ===== VIDEO YOUTUBE SHORT ===== -->
+<div id="youtube" style="margin:20px auto;">
+  <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/AR4yD9GrbuM" 
+          title="YouTube Short" frameborder="0" allowfullscreen>
+  </iframe>
 </div>
 
-<!-- SIGNATURE -->
+<!-- ===== FOOTER ===== -->
+<footer>Boxaweed 2026</footer>
 
-<div class="signature">
-
-Boxaweed 2026
-
-</div>
-
+<!-- ===== JS ===== -->
 <script>
-
-/* HAMBURGER */
-
-function toggleMenu(){
-
-let menu=document.getElementById("menu");
-
-menu.style.display=
-menu.style.display==="block"
-?"none"
-:"block";
-
+function toggleMenu() {
+  const menu = document.getElementById('menuHamburger');
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
-
-/* CREATIONS */
-
-let creationsLoaded=false;
-
-function toggleCreations(){
-
-let div=document.getElementById("creations");
-
-if(div.style.display==="flex"){
-
-div.style.display="none";
-
-return;
-
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-
-div.style.display="flex";
-
-if(!creationsLoaded){
-
-for(let i=1;i<=12;i++){
-
-let img=document.createElement("img");
-
-img.src=`boxaweedsite/creation${i}.jpg`;
-
-img.onclick=()=>window.open(img.src);
-
-div.appendChild(img);
-
+function changeImage(prod, element) {
+  document.getElementById('mainImage'+prod).src = element.src;
 }
-
-creationsLoaded=true;
-
+function toggleBoutique() {
+  const section = document.getElementById('boutique');
+  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
 }
-
+function toggleCreations() {
+  const section = document.getElementById('creations');
+  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
 }
-
-/* BANDE FILANTE */
-
-let scroll=document.getElementById("scroll");
-
-for(let i=1;i<=12;i++){
-
-let img=document.createElement("img");
-
-img.src=`boxaweedsite/boite${i}.jpg`;
-
-img.onclick=()=>window.open(img.src);
-
-scroll.appendChild(img);
-
-}
-
-/* duplication pour boucle infinie */
-
-for(let i=1;i<=12;i++){
-
-let img=document.createElement("img");
-
-img.src=`boxaweedsite/boite${i}.jpg`;
-
-img.onclick=()=>window.open(img.src);
-
-scroll.appendChild(img);
-
-}
-
-/* SHOP */
-
-let shopLoaded=false;
-
-function toggleShop(){
-
-let shop=document.getElementById("shop");
-
-if(shop.style.display==="block"){
-
-shop.style.display="none";
-
-return;
-
-}
-
-shop.style.display="block";
-
-if(!shopLoaded){
-
-for(let i=1;i<=12;i++){
-
-let div=document.createElement("div");
-
-div.className="product";
-
-div.innerHTML=`
-
-<img src="boxaweedsite/boite${i}.jpg">
-
-<p>
-
-Boîte artisanale unique<br>
-
-Entièrement personnalisable<br>
-
-Création sur demande<br>
-
-Contact: ntafforeau@gmail.com
-
-</p>
-
-`;
-
-shop.appendChild(div);
-
-}
-
-shopLoaded=true;
-
-}
-
-}
-
 </script>
 
 </body>
