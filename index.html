@@ -14,15 +14,15 @@ body{
   background:#111;
   color:#fff;
   text-align:center;
-  line-height:1.6; /* espace entre les lignes pour lisibilité */
+  line-height:1.6;
 }
 
 button{
   background:#000;
   color:#fff;
   border:none;
-  padding:15px 30px; /* bouton plus spacieux */
-  margin:15px 10px;   /* plus d’espace autour */
+  padding:15px 30px;
+  margin:15px 10px;
   cursor:pointer;
 }
 
@@ -74,7 +74,7 @@ button:hover{
 
 #intro p{
   text-shadow:0 0 3px #fff;
-  margin:15px 0; /* espace entre paragraphes */
+  margin:15px 0;
 }
 
 /* ===== COMMANDE ===== */
@@ -106,7 +106,7 @@ button:hover{
   width:150px;
   height:150px;
   object-fit:cover;
-  margin-right:15px; /* plus d’espace entre les images */
+  margin-right:15px;
   cursor:pointer;
   transition:0.3s;
 }
@@ -167,10 +167,13 @@ button:hover{
   margin:5px;
 }
 
-/* ===== INSTAGRAM ===== */
-.insta{
-  width:50px;
-  margin:20px;
+/* ===== INSTAGRAM & BOUTIQUE BUTTONS ===== */
+.social-boutique{
+  display:flex;
+  flex-direction:column; /* un en dessous de l'autre */
+  align-items:center;
+  gap:20px; /* espacement entre boutons */
+  margin:40px 0;
 }
 
 /* ===== YOUTUBE ===== */
@@ -293,8 +296,11 @@ button:hover{
   </div>
 </div>
 
-<!-- BOUTON BOUTIQUE -->
-<button onclick="toggleBoutique()">Ma Boutique</button>
+<!-- BOUTON BOUTIQUE ET INSTAGRAM (empilés) -->
+<div class="social-boutique">
+  <button onclick="toggleBoutique()">Ma Boutique</button>
+  <a href="https://www.instagram.com/boxaweed"><button>Instagram</button></a>
+</div>
 
 <!-- BOUTIQUE -->
 <section id="boutique">
@@ -349,11 +355,6 @@ button:hover{
 
 </section>
 
-<!-- INSTAGRAM -->
-<a href="https://www.instagram.com/boxaweed">
-<img src="Boxaweedsite/logoinsta.png" class="insta">
-</a>
-
 <!-- YOUTUBE -->
 <div id="youtube" class="youtube">
 <iframe src="https://www.youtube.com/embed/AR4yD9GrbuM" allowfullscreen></iframe>
@@ -398,4 +399,4 @@ function changeImage(mainId,element){
 </script>
 
 </body>
-</html>
+  </html>
