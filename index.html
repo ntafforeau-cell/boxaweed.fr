@@ -1,87 +1,62 @@
-<!DOCTYPE html><html lang="fr">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BOXAWEED</title><style>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Boxaweed</title>
+
+<style>
 
 body{
 margin:0;
 background:black;
 color:white;
 font-family:Arial, sans-serif;
+text-align:center;
 overflow-x:hidden;
 }
 
 /* LOGO */
+
 .logo{
-position:absolute;
-top:20px;
-left:20px;
-z-index:1001;
+width:220px;
+margin-top:20px;
 }
 
-.logo img{
-height:60px;
+/* TEXTE IMMERSIF */
+
+.intro{
+font-size:28px;
+margin:30px 20px;
+opacity:0;
+animation:introFade 2s ease forwards;
+text-shadow:0 0 6px white;
 }
 
-/* HAMBURGER */
-.hamburger{
-position:fixed;
-top:20px;
-right:20px;
-font-size:30px;
-cursor:pointer;
-z-index:1002;
+@keyframes introFade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-.menu{
-position:fixed;
-top:0;
-right:-250px;
-width:250px;
-height:100%;
-background:black;
-padding-top:80px;
-transition:0.3s;
-z-index:1001;
-}
-
-.menu a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-}
-
-.menu a:hover{
-background:#111;
-}
-
-.menu.open{
-right:0;
-}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-}
-
-.hero h1{
-font-size:40px;
-margin-bottom:20px;
-}
+/* BOUTONS */
 
 .button{
+display:block;
+margin:20px auto;
 padding:15px 30px;
 border:2px solid white;
-background:none;
+background:black;
 color:white;
+font-size:20px;
 cursor:pointer;
-margin-top:20px;
+width:220px;
 }
 
 .button:hover{
@@ -89,246 +64,368 @@ background:white;
 color:black;
 }
 
-/* YOUTUBE */
-.video-container{
-position:relative;
-width:100%;
-max-width:400px;
-aspect-ratio:9/16;
-margin:auto;
-}
+/* HAMBURGER */
 
-.video-container iframe{
-width:100%;
-height:100%;
-border:none;
-}
-
-/* BANDE DEFILANTE */
-.bande-defilante{
-overflow:hidden;
-white-space:nowrap;
-margin:40px 0;
-}
-
-.bande-defilante .track{
-display:inline-block;
-animation:defile 40s linear infinite;
-}
-
-.bande-defilante img{
-height:150px;
-margin:10px;
+.hamburger{
+position:fixed;
+top:20px;
+right:20px;
+font-size:30px;
 cursor:pointer;
+z-index:1000;
 }
 
-@keyframes defile{
-0%{transform:translateX(0);} 
-100%{transform:translateX(-50%);} 
-}
-
-/* GALERIES */
-.section{
-padding:40px;
-text-align:center;
-}
-
-.galerie{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.galerie img{
-width:250px;
-margin:10px;
-cursor:pointer;
-}
-
-/* FULLSCREEN */
-#fullscreenViewer{
+.menu{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:60px;
+right:20px;
 background:black;
-justify-content:center;
+border:1px solid white;
+padding:10px;
+}
+
+.menu a{
+display:block;
+color:white;
+text-decoration:none;
+margin:10px;
+}
+
+/* GALERIE CREATIONS */
+
+.creations{
+display:none;
+flex-direction:column;
 align-items:center;
-z-index:9999;
 }
 
-#fullscreenViewer img{
-max-width:95%;
-max-height:95%;
+.creations img{
+width:90%;
+max-width:500px;
+margin:15px;
+cursor:pointer;
 }
 
-</style></head>
-<body><!-- LOGO --><div class="logo">
-<img src="logo.png">
-</div><!-- HAMBURGER --><div class="hamburger" onclick="toggleMenu()">☰</div><div class="menu" id="menu">
-<a href="#creations">Créations</a>
-<a href="#boutique">Boutique</a>
-<a href="#contact">Créer ma boîte</a>
-</div><!-- HERO --><div class="hero"><h1>Créations uniques sur mesure</h1><div class="video-container">
-<iframe src="https://www.youtube.com/embed/AR4yD9GrbuM" allowfullscreen></iframe>
-</div><p>
-Chaque boîte peut être entièrement personnalisée selon vos envies.
-</p><button class="button" onclick="contact()">
+/* BANDE FILANTE */
+
+.scroll-container{
+overflow:hidden;
+white-space:nowrap;
+margin-top:20px;
+}
+
+.scroll{
+display:inline-block;
+animation:scroll 40s linear infinite;
+}
+
+.scroll img{
+height:160px;
+margin:10px;
+cursor:pointer;
+transition:transform 0.5s;
+}
+
+.scroll img:hover{
+transform:scale(1.1);
+}
+
+@keyframes scroll{
+from{
+transform:translateX(0);
+}
+to{
+transform:translateX(-50%);
+}
+}
+
+/* BOUTIQUE */
+
+.shop{
+display:none;
+}
+
+.product{
+margin:40px;
+}
+
+.product img{
+width:90%;
+max-width:400px;
+}
+
+/* INSTAGRAM */
+
+.insta{
+width:90px;
+margin:40px auto;
+animation:breath 3s infinite;
+}
+
+@keyframes breath{
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+/* VIDEO */
+
+.video{
+width:90%;
+max-width:400px;
+margin:40px auto;
+}
+
+.video iframe{
+width:100%;
+height:500px;
+}
+
+/* SIGNATURE */
+
+.signature{
+margin:50px;
+opacity:0.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HAMBURGER -->
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
+
+<a href="#" onclick="toggleCreations()">Mes créations</a>
+
+<a href="#" onclick="toggleShop()">Ma boutique</a>
+
+<a href="mailto:ntafforeau@gmail.com">Créer ma boîte</a>
+
+</div>
+
+<!-- LOGO -->
+
+<img src="boxaweedsite/logo.png" class="logo">
+
+<!-- TEXTE -->
+
+<div class="intro">
+
+Créations artisanales uniques et personnalisables
+
+</div>
+
+<!-- BOUTON CREER -->
+
+<button class="button"
+onclick="location.href='mailto:ntafforeau@gmail.com'">
+
 Créer ma boîte
-</button></div><!-- BANDE DEFILANTE --><div class="bande-defilante">
-<div class="track" id="track"><img src="boite1.jpg">
-<img src="boite2.jpg">
-<img src="boite3.jpg">
-<img src="boite4.jpg">
-<img src="boite5.jpg">
-<img src="boite6.jpg">
-<img src="boite7.jpg">
-<img src="boite8.jpg">
-<img src="boite9.jpg">
-<img src="boite10.jpg">
-<img src="boite11.jpg">
-<img src="boite12.jpg"><img src="boite1.jpg">
-<img src="boite2.jpg">
-<img src="boite3.jpg">
-<img src="boite4.jpg">
-<img src="boite5.jpg">
-<img src="boite6.jpg">
-<img src="boite7.jpg">
-<img src="boite8.jpg">
-<img src="boite9.jpg">
-<img src="boite10.jpg">
-<img src="boite11.jpg">
-<img src="boite12.jpg"></div>
-</div><!-- CREATIONS --><div class="section" id="creations"><h2>Créations</h2><div class="galerie"><img src="creation1.jpg">
-<img src="creation2.jpg">
-<img src="creation3.jpg">
-<img src="creation4.jpg">
-<img src="creation5.jpg">
-<img src="creation6.jpg">
-<img src="creation7.jpg">
-<img src="creation8.jpg">
-<img src="creation9.jpg">
-<img src="creation10.jpg">
-<img src="creation11.jpg">
-<img src="creation12.jpg"></div></div><!-- BOUTIQUE --><div class="section" id="boutique"><h2>Boutique</h2><div class="galerie"><img src="boite1.jpg">
-<img src="boite2.jpg">
-<img src="boite3.jpg">
-<img src="boite4.jpg">
-<img src="boite5.jpg">
-<img src="boite6.jpg">
-<img src="boite7.jpg">
-<img src="boite8.jpg">
-<img src="boite9.jpg">
-<img src="boite10.jpg">
-<img src="boite11.jpg">
-<img src="boite12.jpg"></div></div><!-- FULLSCREEN --><div id="fullscreenViewer" onclick="closeFullscreen()">
-<img id="fullscreenImage">
-</div><script>
+
+</button>
+
+<!-- BOUTON CREATIONS -->
+
+<button class="button"
+onclick="toggleCreations()">
+
+Mes créations
+
+</button>
+
+<div class="creations" id="creations"></div>
+
+<!-- BANDE FILANTE -->
+
+<div class="scroll-container">
+
+<div class="scroll" id="scroll"></div>
+
+</div>
+
+<!-- BOUTIQUE -->
+
+<button class="button"
+onclick="toggleShop()">
+
+Ma boutique
+
+</button>
+
+<div class="shop" id="shop"></div>
+
+<!-- INSTAGRAM -->
+
+<a href="https://instagram.com" target="_blank">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+class="insta">
+
+</a>
+
+<!-- VIDEO -->
+
+<div class="video">
+
+<iframe
+src="https://www.youtube.com/embed/AR4yD9GrbuM"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<!-- SIGNATURE -->
+
+<div class="signature">
+
+Boxaweed 2026
+
+</div>
+
+<script>
+
+/* HAMBURGER */
 
 function toggleMenu(){
 
-const menu = document.getElementById("menu");
-menu.classList.toggle("open");
+let menu=document.getElementById("menu");
+
+menu.style.display=
+menu.style.display==="block"
+?"none"
+:"block";
 
 }
 
-function contact(){
+/* CREATIONS */
 
-window.location.href="mailto:ntafforeau@gmail.com";
+let creationsLoaded=false;
 
-}
+function toggleCreations(){
 
-let currentImages=[];
-let currentIndex=0;
-let startX=0;
-let endX=0;
+let div=document.getElementById("creations");
 
-function openFullscreen(src, array){
+if(div.style.display==="flex"){
 
-currentImages=array;
-currentIndex=array.indexOf(src);
+div.style.display="none";
 
-document.getElementById("fullscreenImage").src=src;
-document.getElementById("fullscreenViewer").style.display="flex";
+return;
 
 }
 
-function closeFullscreen(){
+div.style.display="flex";
 
-document.getElementById("fullscreenViewer").style.display="none";
+if(!creationsLoaded){
 
-}
+for(let i=1;i<=12;i++){
 
-function nextImage(){
+let img=document.createElement("img");
 
-currentIndex++;
+img.src=`boxaweedsite/creation${i}.jpg`;
 
-if(currentIndex>=currentImages.length)
-currentIndex=0;
+img.onclick=()=>window.open(img.src);
 
-document.getElementById("fullscreenImage").src=currentImages[currentIndex];
-
-}
-
-function prevImage(){
-
-currentIndex--;
-
-if(currentIndex<0)
-currentIndex=currentImages.length-1;
-
-document.getElementById("fullscreenImage").src=currentImages[currentIndex];
+div.appendChild(img);
 
 }
 
-// CLICK IMAGES
-
-function enableGallery(selector){
-
-const imgs=document.querySelectorAll(selector);
-const array=[...imgs].map(img=>img.src);
-
-imgs.forEach(img=>{
-img.onclick=()=>openFullscreen(img.src,array);
-});
+creationsLoaded=true;
 
 }
 
-enableGallery(".galerie img");
-enableGallery(".bande-defilante img");
+}
 
-// SWIPE
+/* BANDE FILANTE */
 
-const viewer=document.getElementById("fullscreenViewer");
+let scroll=document.getElementById("scroll");
 
-viewer.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX;
-});
+for(let i=1;i<=12;i++){
 
-viewer.addEventListener("touchend",e=>{
+let img=document.createElement("img");
 
-endX=e.changedTouches[0].clientX;
+img.src=`boxaweedsite/boite${i}.jpg`;
 
-if(startX-endX>50)nextImage();
-if(endX-startX>50)prevImage();
+img.onclick=()=>window.open(img.src);
 
-});
-
-// KEYBOARD
-
-document.addEventListener("keydown",e=>{
-
-if(viewer.style.display==="flex"){
-
-if(e.key==="ArrowRight")nextImage();
-if(e.key==="ArrowLeft")prevImage();
-if(e.key==="Escape")closeFullscreen();
+scroll.appendChild(img);
 
 }
 
-});
+/* duplication pour boucle infinie */
 
-</script></body>
+for(let i=1;i<=12;i++){
+
+let img=document.createElement("img");
+
+img.src=`boxaweedsite/boite${i}.jpg`;
+
+img.onclick=()=>window.open(img.src);
+
+scroll.appendChild(img);
+
+}
+
+/* SHOP */
+
+let shopLoaded=false;
+
+function toggleShop(){
+
+let shop=document.getElementById("shop");
+
+if(shop.style.display==="block"){
+
+shop.style.display="none";
+
+return;
+
+}
+
+shop.style.display="block";
+
+if(!shopLoaded){
+
+for(let i=1;i<=12;i++){
+
+let div=document.createElement("div");
+
+div.className="product";
+
+div.innerHTML=`
+
+<img src="boxaweedsite/boite${i}.jpg">
+
+<p>
+
+Boîte artisanale unique<br>
+
+Entièrement personnalisable<br>
+
+Création sur demande<br>
+
+Contact: ntafforeau@gmail.com
+
+</p>
+
+`;
+
+shop.appendChild(div);
+
+}
+
+shopLoaded=true;
+
+}
+
+}
+
+</script>
+
+</body>
 </html>
