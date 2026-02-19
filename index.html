@@ -11,16 +11,24 @@ h1, h2, h3 { margin: 10px 0; }
 p { margin: 5px 0; }
 a { color: #fff; text-decoration: none; }
 
-/* ===== LOGO ===== */
-#logo { width:180px; margin: 20px auto; display:block; }
+/* ===== HEADER ===== */
+header { position: relative; padding: 20px; }
+#logo { width:180px; display:block; margin:0 auto; }
+
+/* ===== HAMBURGER ===== */
+#hamburger { position: absolute; top:20px; right:20px; width:30px; height:22px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; }
+#hamburger span { display:block; height:4px; background:#fff; border-radius:2px; animation: blink 2s infinite; }
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0.3; }
+}
 
 /* ===== TEXTE INTRODUCTION ===== */
 #intro {
   max-width:600px;
-  margin:0 auto;
+  margin:20px auto;
   text-align:center;
   line-height:1.5em;
-  padding: 0 20px;
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff;
   animation: glow 3s infinite alternate;
@@ -76,8 +84,14 @@ footer { margin-top:40px; font-size: 0.9em; }
 </head>
 <body>
 
-<!-- ===== LOGO ===== -->
-<img src="Boxaweedsite/logo.png" id="logo">
+<header>
+  <img src="Boxaweedsite/logo.png" id="logo">
+  <div id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
 
 <!-- ===== TEXTE INTRODUCTION ===== -->
 <div id="intro">
@@ -189,9 +203,7 @@ footer { margin-top:40px; font-size: 0.9em; }
 
 <!-- ===== VIDEO YT ===== -->
 <div style="margin:40px;">
-<iframe width="320" height="180"
-src="https://www.youtube.com/embed/"
-frameborder="0" allowfullscreen></iframe>
+<iframe width="320" height="180" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <!-- ===== FOOTER ===== -->
@@ -236,4 +248,4 @@ function openImage(src){
 </script>
 
 </body>
-</html>
+          </html>
