@@ -4,498 +4,180 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boxaweed</title>
-
 <style>
-/* BASE */
-body{
-  margin:0;
-  background:black;
-  color:white;
-  font-family:Arial, sans-serif;
-  text-align:center;
-}
+/* ===== STYLE GENERAL ===== */
+body { margin:0; font-family: Arial, sans-serif; background: #111; color: #fff; text-align:center; }
+h1, h2, h3 { margin: 10px 0; }
+p { margin: 5px 0; }
+a { color: #fff; text-decoration: none; }
 
-/* LOGO */
-.logo{
-  width:180px;
-  margin-top:30px;
-  margin-bottom:20px;
-}
+/* ===== BANDE HORIZONTALE ===== */
+.bande-defilante { display: flex; overflow: hidden; white-space: nowrap; margin: 20px 0; }
+.bande-defilante img { width: 150px; height: 150px; object-fit: cover; margin-right: 10px; transition: transform 0.3s; }
+.bande-defilante img:hover { transform: scale(1.2); }
+@keyframes defile { 0% {transform: translateX(0);} 100% {transform: translateX(-50%);} }
+.defilement { display: flex; animation: defile 20s linear infinite; }
 
-/* SIGNATURE */
-.signature{
-  max-width:90%;
-  margin:0 auto 40px auto;
-  font-size:20px;
-  line-height:1.6;
-  opacity:0;
-  animation:fadeIn 2s ease forwards;
-}
+/* ===== BOUTONS ===== */
+button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
+button:hover { background: #444; }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
+/* ===== VITRINE MES CREATIONS ===== */
+#creations { display:none; padding:20px; text-align:center; }
+#creations img { width: 200px; height:200px; object-fit: cover; margin:10px; transition: transform 0.3s; }
+#creations img:hover { transform: scale(1.1); }
 
-/* HAMBURGER */
-.menu-hamburger{
-  width:40px;   
-  height:35px;  
-  position:fixed;
-  top:20px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  z-index:1000;
-}
+/* ===== BOUTIQUE ===== */
+#boutique { display:none; padding: 20px; text-align:center; }
+.produit { margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+.galerie { display: flex; flex-direction: column; align-items: center; }
+.modal-main { width: 300px; max-width: 90%; margin-bottom: 10px; }
+.miniatures { display: flex; gap: 5px; justify-content: center; }
+.miniatures img { width: 50px; height: 50px; object-fit: cover; cursor: pointer; transition: 0.3s; }
+.miniatures img:hover { transform: scale(1.2); }
 
-.menu-hamburger div{
-  height:5px;              
-  background:#ffffff;      
-  border-radius:3px;
-  transition: all 0.3s ease;
-}
+/* ===== FOOTER ===== */
+footer { margin-top:40px; font-size: 0.9em; }
 
-.menu-hamburger:hover div{
-  box-shadow: 0 0 8px rgba(255,255,255,0.8);
-}
-
-/* MENU HIDDEN BY DEFAULT */
-.menu{
-  position:fixed;
-  top:0;
-  right:-220px; 
-  height:100%;
-  width:220px;
-  background:#111;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transition:right 0.3s ease;
-  z-index:999;
-}
-
-.menu a{
-  color:white;
-  text-decoration:none;
-  font-size:18px;
-  margin:20px 0;
-  transition: color 0.3s;
-}
-
-.menu a:hover{
-  color:#ccc;
-}
-
-.menu.open{
-  right:0;
-}
-
-/* GALERIE HORIZONTALE */
-.gallery{
-  overflow:hidden;
-  width:100%;
-  margin-bottom:40px;
-  touch-action: pan-y;
-}
-
-.gallery-track{
-  display:flex;
-  width:max-content;
-  animation:scroll 30s linear infinite;
-  cursor:grab;
-}
-
-.gallery-track img{
-  height:180px;
-  width:auto;
-  flex-shrink:0;
-  margin:8px;
-  border-radius:10px;
-  object-fit:cover;
-  user-select:none;
-}
-
-@keyframes scroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-
-/* BOUTONS */
-.creations-btn, .boutique-btn{
-  display:inline-block;
-  padding:15px 25px;
-  border:1px solid white;
-  margin:10px;
-  cursor:pointer;
-}
-
-/* VITRINE VERTICALE */
-.vitrine{
-  max-width:90%;
-  margin:auto;
-  display:none;
-}
-
-.vitrine img{
-  width:100%;
-  margin-bottom:20px;
-  border-radius:10px;
-}
-
-/* SECTION BOUTIQUE */
-.boutique{
-  background:#111;
-  color:white;
-  padding:50px 0;
-  display:none;
-}
-
-.boutique h2{
-  font-size:28px;
-  margin-bottom:40px;
-}
-
-.produits{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:30px;
-}
-
-.produit{
-  background:#222;
-  padding:15px;
-  border-radius:10px;
-  max-width:220px;
-  text-align:center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.produit img{
-  width:100%;
-  border-radius:10px;
-  margin-bottom:15px;
-}
-
-.produit h3{
-  font-size:18px;
-  margin-bottom:8px;
-}
-
-.produit p{
-  font-size:16px;
-  margin-bottom:12px;
-}
-
-.produit .desc{
-  font-size:14px;
-  font-style:italic;
-  margin:10px 0 15px 0;
-  line-height:1.5;
-  color:#ccc;
-}
-
-.produit .btn-commander{
-  display:inline-block;
-  padding:10px 20px;
-  color:white;
-  border:1px solid white;
-  text-decoration:none;
-  border-radius:8px;
-  transition: all 0.3s ease;
-}
-
-.produit .btn-commander:hover{
-  background:white;
-  color:black;
-  transform:scale(1.05);
-}
-
-.produit:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 15px rgba(255,255,255,0.2);
-}
-
-/* INSTAGRAM */
-.instagram-btn{
-  display:block;
-  width:100px;
-  margin:40px auto 60px auto;
-  cursor:pointer;
-}
-
-.instagram-btn img{
-  width:100%;
-  border-radius:12px;
-  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-  animation: breathe 4s ease-in-out infinite;
-}
-
-.instagram-btn img:hover{
-  transform: scale(1.15);
-  filter: brightness(1.2);
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-}
-
-.instagram-btn img:active{
-  transform: scale(1.15);
-  filter: brightness(1.2);
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
-}
-
-@keyframes breathe{
-  0%{ transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
-  50%{ transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.25); }
-  100%{ transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
-}
-
-/* VIDEO */
-.video{
-  margin:40px auto;
-  max-width:90%;
-}
-
-.video iframe{
-  width:100%;
-  height:400px;
-  border:none;
-  border-radius:10px;
-}
-
-/* FOOTER */
-footer{
-  margin:40px 0;
-  color:grey;
-  font-size:14px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .logo{ width:140px; }
-  .signature{ font-size:22px; }
-  .gallery-track img{ height:120px; margin:6px; }
-  .instagram-btn{ width:90px; }
-  .video iframe{ height:220px; }
-  .produit{ max-width:90%; }
-  .produits{ flex-direction:column; gap:25px; align-items:center; }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .modal-main { width: 90%; }
+  .miniatures img { width: 40px; height: 40px; }
+  .bande-defilante img { width: 100px; height: 100px; }
+  #creations img { width: 120px; height: 120px; }
 }
 </style>
 </head>
-
 <body>
 
-<!-- LOGO -->
-<img src="Boxaweedsite/logo.png" class="logo">
+<h1>Boxaweed</h1>
 
-<!-- MENU HAMBURGER -->
-<div class="menu-hamburger" id="menuHamburger">
-  <div></div>
-  <div></div>
-  <div></div>
+<!-- ===== TEXTE INTRODUCTION ===== -->
+<div id="intro" style="max-width:600px; margin:0 auto; text-align:left; line-height:1.5em; padding: 0 20px;">
+<p>Je vous présente mes créations fabriquées essentiellement avec du bois noble. Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs. Je les transforme et revalorise avec patience et passion.</p>
+<p>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</p>
+<p>Elles sont toutes uniques et numérotées.</p>
+<p>Conçues pour durer. Conçues pour traverser le temps.</p>
 </div>
 
-<nav class="menu" id="menu">
-  <a href="#boutique">Boutique</a>
-  <a href="#vitrine">Mes créations</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- SIGNATURE -->
-<div class="signature">
-Je travaille uniquement avec du bois noble recyclé.<br>
-Des fragments voués à disparaître, que je transforme avec patience.<br><br>
-Chaque pièce est façonnée à la main, sans modèle, sans répétition.<br><br>
-Elles sont toutes uniques et numérotées.<br><br>
-Conçues pour durer.<br>
-Conçues pour traverser le temps.
-</div>
-
-<!-- BOUTONS -->
-<div class="creations-btn">Mes créations</div>
-<div class="boutique-btn">Ma Boutique</div>
-
-<!-- GALERIE HORIZONTALE -->
-<div class="gallery">
-  <div class="gallery-track" id="galleryTrack">
-
-    <!-- Originales -->
-    <img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
-
-    <!-- Copies pour loop infinie -->
-    <img src="Boxaweedsite/boite1.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite2.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite3.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite4.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite5.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite6.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite7.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite8.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite9.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite10.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite11.jpg" onclick="openZoom(this)">
-    <img src="Boxaweedsite/boite12.jpg" onclick="openZoom(this)">
-
+<!-- ===== BANDE HORIZONTALE ===== -->
+<div class="bande-defilante">
+  <div class="defilement">
+    <img src="Boxaweedsite/boite1.jpg">
+    <img src="Boxaweedsite/boite2.jpg">
+    <img src="Boxaweedsite/boite3.jpg">
+    <img src="Boxaweedsite/boite4.jpg">
+    <img src="Boxaweedsite/boite5.jpg">
+    <img src="Boxaweedsite/boite6.jpg">
+    <img src="Boxaweedsite/boite7.jpg">
+    <img src="Boxaweedsite/boite8.jpg">
   </div>
 </div>
 
-<!-- VITRINE VERTICALE -->
-<div class="vitrine" id="vitrine">
-  <img src="Boxaweedsite/creation1.jpg">
-  <img src="Boxaweedsite/creation2.jpg">
-  <img src="Boxaweedsite/creation3.jpg">
-  <img src="Boxaweedsite/creation4.jpg">
-  <img src="Boxaweedsite/creation5.jpg">
-  <img src="Boxaweedsite/creation6.jpg">
-  <img src="Boxaweedsite/creation7.jpg">
-  <img src="Boxaweedsite/creation8.jpg">
-  <img src="Boxaweedsite/creation9.jpg">
-  <img src="Boxaweedsite/creation10.jpg">
-  <img src="Boxaweedsite/creation11.jpg">
-  <img src="Boxaweedsite/creation12.jpg">
-</div>
+<!-- ===== BOUTONS ===== -->
+<button onclick="toggleCreations()">Mes Créations</button>
+<button onclick="toggleBoutique()">Ma Boutique</button>
 
-<!-- SECTION BOUTIQUE -->
-<section class="boutique" id="boutique">
-  <h2>Ma Boutique</h2>
-  <div class="produits">
-    <!-- Exemple Produit 1 -->
-    <div class="produit">
-      <img src="Boxaweedsite/produit1.jpg" alt="Boîte Unique #1">
-      <h3>Boîte Unique #1</h3>
-      <p><strong>Prix :</strong> 49€</p>
-      <p><strong>Dimensions :</strong> 12 x 8 x 6 cm</p>
-      <p><strong>Essences de bois :</strong> Chêne & Noyer</p>
-      <p class="desc">Une boîte façonnée à la main, mélangeant le charme du chêne et la profondeur du noyer. Chaque veine raconte son histoire.</p>
-      <a href="#" class="btn-commander">Commander</a>
+<!-- ===== VITRINE MES CREATIONS ===== -->
+<section id="creations">
+  <img src="Boxaweedsite/boite1.jpg">
+  <img src="Boxaweedsite/boite2.jpg">
+  <img src="Boxaweedsite/boite3.jpg">
+  <img src="Boxaweedsite/boite4.jpg">
+  <img src="Boxaweedsite/boite5.jpg">
+  <img src="Boxaweedsite/boite6.jpg">
+  <img src="Boxaweedsite/boite7.jpg">
+  <img src="Boxaweedsite/boite8.jpg">
+</section>
+
+<!-- ===== BOUTIQUE ===== -->
+<section id="boutique">
+  <!-- PRODUIT A -->
+  <div class="produit">
+    <h3>Boxaweed N°38</h3>
+    <p><strong>Prix :</strong> 85€</p>
+    <p><strong>Dimensions :</strong> 17,5cm × 17,5cm × 24cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit1.jpg" id="mainImageA" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit1.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit2.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit3.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit4.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit5.jpg" onclick="changeImage('A', this)">
+      </div>
     </div>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/85'">Commander</button>
+  </div>
+
+  <!-- PRODUIT B -->
+  <div class="produit">
+    <h3>Boxaweed N°37</h3>
+    <p><strong>Prix :</strong> 65€</p>
+    <p><strong>Dimensions :</strong> 16cm × 16cm × 15,5cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit6.jpg" id="mainImageB" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit6.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit7.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit8.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit9.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit10.jpg" onclick="changeImage('B', this)">
+      </div>
+    </div>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/65'">Commander</button>
+  </div>
+
+  <!-- PRODUIT C -->
+  <div class="produit">
+    <h3>Boxaweed N°36</h3>
+    <p><strong>Prix :</strong> 75€</p>
+    <p><strong>Dimensions :</strong> 18,5cm × 18,5cm × 27cm</p>
+    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+    <p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
+    <div class="galerie">
+      <img src="Boxaweedsite/produit11.jpg" id="mainImageC" class="modal-main">
+      <div class="miniatures">
+        <img src="Boxaweedsite/produit11.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit12.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit13.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit14.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit15.jpg" onclick="changeImage('C', this)">
+      </div>
+    </div>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/75'">Commander</button>
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<a class="instagram-btn" href="https://www.instagram.com/boxaweed/" target="_blank">
-<img src="Boxaweedsite/logoinsta.png">
+<!-- ===== LOGO INSTAGRAM ===== -->
+<a href="https://www.instagram.com/boxaweed" target="_blank">
+  <img src="Boxaweedsite/logoinsta.png" alt="Instagram" style="width:50px; margin:20px; cursor:pointer;">
 </a>
 
-<!-- VIDEO -->
-<div class="video">
-<iframe src="https://www.youtube.com/embed/T6Jra2Oojnw"></iframe>
-</div>
+<!-- ===== FOOTER ===== -->
+<footer>Boxaweed 2026</footer>
 
-<!-- FOOTER -->
-<footer id="contact">
-Boxaweed 2026
-</footer>
-
-<!-- SCRIPT -->
+<!-- ===== JS ===== -->
 <script>
-/* AFFICHER / CACHER VITRINE */
-const btn = document.querySelector('.creations-btn');
-const vitrine = document.getElementById('vitrine');
-btn.addEventListener('click', () => {
-  if(vitrine.style.display === "none"){
-    vitrine.style.display = "block";
-    btn.innerText = "Fermer la vitrine";
-  } else {
-    vitrine.style.display = "none";
-    btn.innerText = "Mes créations";
-  }
-});
-
-/* AFFICHER / CACHER BOUTIQUE */
-const boutiqueBtn = document.querySelector('.boutique-btn');
-const boutiqueSection = document.getElementById('boutique');
-boutiqueBtn.addEventListener('click', () => {
-  if(boutiqueSection.style.display === "none" || boutiqueSection.style.display === ""){
-    boutiqueSection.style.display = "block";
-    boutiqueBtn.innerText = "Fermer la boutique";
-  } else {
-    boutiqueSection.style.display = "none";
-    boutiqueBtn.innerText = "Ma Boutique";
-  }
-});
-
-/* LIGHTBOX ZOOM */
-const zoomContainer = document.createElement('div');
-zoomContainer.id = "zoomContainer";
-zoomContainer.style.cssText = "display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:9999;cursor:pointer;";
-const zoomImage = document.createElement('img');
-zoomImage.id = "zoomImage";
-zoomImage.style.cssText = "max-width:90%;max-height:90%;border-radius:10px;";
-zoomContainer.appendChild(zoomImage);
-document.body.appendChild(zoomContainer);
-
-function openZoom(img){
-  zoomImage.src = img.src;
-  zoomContainer.style.display = "flex";
+function changeImage(prod, element) {
+  if(prod === 'A') document.getElementById('mainImageA').src = element.src;
+  if(prod === 'B') document.getElementById('mainImageB').src = element.src;
+  if(prod === 'C') document.getElementById('mainImageC').src = element.src;
 }
 
-zoomContainer.addEventListener('click', function(){
-  zoomContainer.style.display = "none";
-});
+function toggleBoutique() {
+  const section = document.getElementById('boutique');
+  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
 
-/* MENU HAMBURGER */
-const menuHamburger = document.getElementById('menuHamburger');
-const menu = document.getElementById('menu');
-menuHamburger.addEventListener('click', ()=>{
-  menu.classList.toggle('open');
-});
-
-/* SCROLL MANUEL GALERIE */
-const galleryTrack = document.getElementById('galleryTrack');
-let isDown = false;
-let startX;
-let scrollLeft;
-
-galleryTrack.addEventListener('mousedown', (e)=>{
-  isDown = true;
-  galleryTrack.style.cursor = 'grabbing';
-  startX = e.pageX - galleryTrack.offsetLeft;
-  scrollLeft = galleryTrack.scrollLeft;
-  galleryTrack.style.animationPlayState = 'paused';
-});
-
-galleryTrack.addEventListener('mouseleave', ()=>{isDown=false; galleryTrack.style.cursor='grab'; galleryTrack.style.animationPlayState='running';});
-galleryTrack.addEventListener('mouseup', ()=>{isDown=false; galleryTrack.style.cursor='grab'; galleryTrack.style.animationPlayState='running';});
-
-galleryTrack.addEventListener('mousemove', (e)=>{
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - galleryTrack.offsetLeft;
-  const walk = (x - startX) * 2;
-  galleryTrack.scrollLeft = scrollLeft - walk;
-});
-
-/* TOUCH SUR MOBILE */
-galleryTrack.addEventListener('touchstart', (e)=>{
-  startX = e.touches[0].pageX - galleryTrack.offsetLeft;
-  scrollLeft = galleryTrack.scrollLeft;
-  galleryTrack.style.animationPlayState = 'paused';
-});
-
-galleryTrack.addEventListener('touchmove', (e)=>{
-  const x = e.touches[0].pageX - galleryTrack.offsetLeft;
-  const walk = (x - startX) * 2;
-  galleryTrack.scrollLeft = scrollLeft - walk;
-});
-
-galleryTrack.addEventListener('touchend', ()=>{
-  galleryTrack.style.animationPlayState = 'running';
-});
+function toggleCreations() {
+  const section = document.getElementById('creations');
+  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
 </script>
 
 </body>
