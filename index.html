@@ -9,254 +9,193 @@
 
 /* ===== STYLE GENERAL ===== */
 
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#111;
-  color:#fff;
-  text-align:center;
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#111;
+color:#fff;
+text-align:center;
 }
 
-h1,h2,h3 { margin:10px 0; }
+button{
+background:#000;
+color:#fff;
+border:none;
+padding:12px 25px;
+margin:10px;
+cursor:pointer;
+}
 
-p { margin:5px 0; }
-
-a { color:#fff; text-decoration:none; }
-
+button:hover{
+background:#444;
+}
 
 /* ===== LOGO ===== */
 
-.logo {
-  width:150px;
-  margin-top:10px;
+.logo{
+width:150px;
+margin-top:10px;
 }
-
 
 /* ===== HAMBURGER ===== */
 
-.hamburger {
-  position:fixed;
-  top:10px;
-  right:10px;
-  cursor:pointer;
-  z-index:1000;
+.hamburger{
+position:fixed;
+top:10px;
+right:10px;
+z-index:1000;
+cursor:pointer;
 }
 
-.hamburger div {
-  width:30px;
-  height:4px;
-  background:#fff;
-  margin:5px;
+.hamburger div{
+width:30px;
+height:4px;
+background:#fff;
+margin:5px;
 }
-
 
 /* ===== MENU ===== */
 
-.menu {
-  display:none;
-  position:fixed;
-  top:50px;
-  right:10px;
-  background:#111;
-  border:1px solid #444;
-  padding:10px;
-  z-index:999;
+.menu{
+display:none;
+position:fixed;
+top:50px;
+right:10px;
+background:#111;
+border:1px solid #444;
+padding:10px;
+z-index:999;
 }
-
-.menu button {
-  display:block;
-  margin:5px 0;
-}
-
 
 /* ===== INTRO ===== */
 
-#intro {
-  max-width:600px;
-  margin:60px auto 20px;
-  padding:0 20px;
+#intro{
+max-width:600px;
+margin:60px auto 20px;
+padding:0 20px;
 }
 
-#intro p {
-  text-shadow:0 0 3px #fff;
+#intro p{
+text-shadow:0 0 3px #fff;
 }
-
-
-/* ===== BOUTON COMMANDE ===== */
-
-#commande {
-  margin:20px auto;
-  max-width:600px;
-}
-
-#commande button {
-  margin-top:15px;
-  background:#000;
-  color:#fff;
-  border:none;
-  padding:12px 25px;
-  cursor:pointer;
-}
-
-#commande button:hover {
-  background:#444;
-}
-
 
 /* ===== BANDE DEFILANTE ===== */
 
-.bande-wrapper {
-  overflow:hidden;
-  width:100%;
-  margin:20px 0;
+.bande-wrapper{
+overflow:hidden;
+width:100%;
+margin:20px 0;
 }
 
-.bande-defilante {
-  display:flex;
-  width:max-content;
-  animation:defilement 40s linear infinite;
+.bande-defilante{
+display:flex;
+width:max-content;
+animation:defilement 40s linear infinite;
 }
 
-.bande-defilante img {
-
-  width:150px;
-  height:150px;
-  object-fit:cover;
-  margin-right:10px;
-  cursor:pointer;
-  transition:0.3s;
+.bande-defilante img{
+width:150px;
+height:150px;
+object-fit:cover;
+margin-right:10px;
+cursor:pointer;
+transition:0.3s;
 }
 
-.bande-defilante img:hover {
-  transform:scale(1.1);
+.bande-defilante img:hover{
+transform:scale(1.1);
 }
 
-@keyframes defilement {
-
-  from {
-    transform:translateX(0);
-  }
-
-  to {
-    transform:translateX(-50%);
-  }
-
+@keyframes defilement{
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
 }
-
 
 /* ===== CREATIONS ===== */
 
-#creations {
-
-  display:none;
-  padding:20px;
+#creations{
+display:none;
+padding:20px;
 }
 
-#creations img {
-
-  width:200px;
-  height:200px;
-  object-fit:cover;
-  margin:10px;
-  cursor:pointer;
-  transition:0.3s;
+#creations img{
+width:200px;
+height:200px;
+object-fit:cover;
+margin:10px;
+cursor:pointer;
 }
-
-#creations img:hover {
-
-  transform:scale(1.05);
-}
-
 
 /* ===== BOUTIQUE ===== */
 
-#boutique {
-
-  display:none;
-  padding:20px;
+#boutique{
+display:none;
+padding:20px;
 }
 
-.modal-main {
-
-  width:300px;
-  max-width:90%;
+.produit{
+margin-bottom:40px;
+border-bottom:1px solid #444;
+padding-bottom:20px;
 }
 
-.miniatures img {
-
-  width:50px;
-  height:50px;
-  cursor:pointer;
+.produit img{
+cursor:pointer;
 }
 
+.modal-main{
+width:300px;
+max-width:90%;
+margin-bottom:10px;
+}
+
+.miniatures img{
+width:60px;
+height:60px;
+margin:5px;
+}
 
 /* ===== INSTAGRAM ===== */
 
-.insta {
-
-  width:50px;
-  margin:20px;
+.insta{
+width:50px;
+margin:20px;
 }
-
 
 /* ===== YOUTUBE ===== */
 
-.youtube iframe {
-
-  width:90%;
-  max-width:400px;
-  height:225px;
+.youtube iframe{
+width:90%;
+max-width:400px;
+height:225px;
 }
 
+/* ===== MODAL IMAGE ===== */
 
-/* ===== MODAL PLEIN ECRAN ===== */
-
-#imageModal {
-
-  display:none;
-
-  position:fixed;
-
-  z-index:2000;
-
-  left:0;
-
-  top:0;
-
-  width:100%;
-
-  height:100%;
-
-  background:rgba(0,0,0,0.95);
-
-  justify-content:center;
-
-  align-items:center;
-
+#imageModal{
+display:none;
+position:fixed;
+z-index:2000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+justify-content:center;
+align-items:center;
 }
 
-#imageModal img {
-
-  max-width:95%;
-
-  max-height:95%;
-
+#imageModal img{
+max-width:95%;
+max-height:95%;
 }
 
-#closeModal {
-
-  position:absolute;
-
-  top:20px;
-
-  right:30px;
-
-  font-size:40px;
-
-  color:#fff;
-
-  cursor:pointer;
-
+#closeModal{
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+cursor:pointer;
 }
 
 </style>
@@ -272,21 +211,24 @@ a { color:#fff; text-decoration:none; }
 <!-- HAMBURGER -->
 
 <div class="hamburger" onclick="toggleMenu()">
-
 <div></div>
 <div></div>
 <div></div>
-
 </div>
-
 
 <div class="menu" id="menuHamburger">
 
-<button onclick="scrollToSection('commande')">Créer ma boîte</button>
+<button onclick="scrollToSection('commande')">
+Créer ma boîte
+</button>
 
-<button onclick="toggleCreations()">Mes Créations</button>
+<button onclick="toggleCreations()">
+Mes Créations
+</button>
 
-<button onclick="toggleBoutique()">Ma Boutique</button>
+<button onclick="toggleBoutique()">
+Ma Boutique
+</button>
 
 <button onclick="window.location.href='https://www.instagram.com/boxaweed'">
 Instagram
@@ -304,9 +246,7 @@ Vidéo YouTube
 <div id="intro">
 
 <p>Je vous présente mes créations fabriquées essentiellement avec du bois noble.</p>
-
-<p>Chaque pièce est unique, façonnée à la main.</p>
-
+<p>Chaque pièce est unique et façonnée à la main.</p>
 <p>Conçues pour durer.</p>
 
 </div>
@@ -317,15 +257,11 @@ Vidéo YouTube
 <div id="commande">
 
 <p>
-
 Chaque création peut être réalisée sur commande et personnalisée.
-
 </p>
 
 <button onclick="window.location.href='mailto:ntafforeau@gmail.com'">
-
 Créer ma boîte / Personnaliser ma boîte
-
 </button>
 
 </div>
@@ -333,7 +269,9 @@ Créer ma boîte / Personnaliser ma boîte
 
 <!-- BOUTON CREATIONS -->
 
-<button onclick="toggleCreations()">Mes Créations</button>
+<button onclick="toggleCreations()">
+Mes Créations
+</button>
 
 
 <!-- CREATIONS -->
@@ -359,7 +297,6 @@ Créer ma boîte / Personnaliser ma boîte
 <!-- BANDE DEFILANTE -->
 
 <div class="bande-wrapper">
-
 <div class="bande-defilante">
 
 <img src="Boxaweedsite/boite1.jpg" onclick="openModal(this)">
@@ -394,12 +331,95 @@ Créer ma boîte / Personnaliser ma boîte
 </div>
 
 
+<!-- BOUTON BOUTIQUE -->
+
+<button onclick="toggleBoutique()">
+Ma Boutique
+</button>
+
+
+<!-- BOUTIQUE COMPLETE -->
+
+<section id="boutique">
+
+<div class="produit">
+
+<h3>Boxaweed N°38</h3>
+
+<p>85€</p>
+
+<img src="Boxaweedsite/produit1.jpg" id="main1" class="modal-main" onclick="openModal(this)">
+
+<div class="miniatures">
+
+<img src="Boxaweedsite/produit1.jpg" onclick="changeImage('main1',this)">
+<img src="Boxaweedsite/produit2.jpg" onclick="changeImage('main1',this)">
+<img src="Boxaweedsite/produit3.jpg" onclick="changeImage('main1',this)">
+<img src="Boxaweedsite/produit4.jpg" onclick="changeImage('main1',this)">
+<img src="Boxaweedsite/produit5.jpg" onclick="changeImage('main1',this)">
+
+</div>
+
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/85')">
+Commander
+</button>
+
+</div>
+
+
+<div class="produit">
+
+<h3>Boxaweed N°37</h3>
+
+<p>65€</p>
+
+<img src="Boxaweedsite/produit6.jpg" id="main2" class="modal-main" onclick="openModal(this)">
+
+<div class="miniatures">
+
+<img src="Boxaweedsite/produit6.jpg" onclick="changeImage('main2',this)">
+<img src="Boxaweedsite/produit7.jpg" onclick="changeImage('main2',this)">
+<img src="Boxaweedsite/produit8.jpg" onclick="changeImage('main2',this)">
+<img src="Boxaweedsite/produit9.jpg" onclick="changeImage('main2',this)">
+<img src="Boxaweedsite/produit10.jpg" onclick="changeImage('main2',this)">
+
+</div>
+
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/65')">
+Commander
+</button>
+
+</div>
+
+
+<div class="produit">
+
+<h3>Boxaweed N°36</h3>
+
+<p>75€</p>
+
+<img src="Boxaweedsite/produit11.jpg" id="main3" class="modal-main" onclick="openModal(this)">
+
+<div class="miniatures">
+
+<img src="Boxaweedsite/produit11.jpg" onclick="changeImage('main3',this)">
+<img src="Boxaweedsite/produit12.jpg" onclick="changeImage('main3',this)">
+
+</div>
+
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/75')">
+Commander
+</button>
+
+</div>
+
+</section>
+
+
 <!-- INSTAGRAM -->
 
 <a href="https://www.instagram.com/boxaweed">
-
 <img src="Boxaweedsite/logoinsta.png" class="insta">
-
 </a>
 
 
@@ -415,11 +435,8 @@ Créer ma boîte / Personnaliser ma boîte
 <!-- MODAL -->
 
 <div id="imageModal" onclick="closeModal()">
-
 <span id="closeModal">&times;</span>
-
 <img id="modalImg">
-
 </div>
 
 
@@ -429,9 +446,25 @@ Créer ma boîte / Personnaliser ma boîte
 
 function toggleMenu(){
 
-const menu=document.getElementById("menuHamburger");
+let menu=document.getElementById("menuHamburger");
 
 menu.style.display=(menu.style.display==="block")?"none":"block";
+
+}
+
+function toggleCreations(){
+
+let section=document.getElementById("creations");
+
+section.style.display=(section.style.display==="block")?"none":"block";
+
+}
+
+function toggleBoutique(){
+
+let section=document.getElementById("boutique");
+
+section.style.display=(section.style.display==="block")?"none":"block";
 
 }
 
@@ -440,25 +473,6 @@ function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
 
 }
-
-function toggleCreations(){
-
-const section=document.getElementById("creations");
-
-section.style.display=(section.style.display==="block")?"none":"block";
-
-}
-
-function toggleBoutique(){
-
-const section=document.getElementById("boutique");
-
-section.style.display=(section.style.display==="block")?"none":"block";
-
-}
-
-
-/* MODAL */
 
 function openModal(img){
 
@@ -474,7 +488,13 @@ document.getElementById("imageModal").style.display="none";
 
 }
 
+function changeImage(mainId,element){
+
+document.getElementById(mainId).src=element.src;
+
+}
+
 </script>
 
 </body>
-  </html>
+</html>
