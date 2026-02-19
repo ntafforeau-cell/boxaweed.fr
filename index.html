@@ -19,26 +19,29 @@ header { position: relative; padding: 20px; }
 #hamburger { position: absolute; top:20px; right:20px; width:30px; height:22px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; }
 #hamburger span { display:block; height:4px; background:#fff; border-radius:2px; }
 
-/* ===== TEXTE INTRODUCTION AJUSTÉ ===== */
+/* ===== TEXTE INTRODUCTION ===== */
 #intro {
   max-width:600px;
   margin:20px auto;
   text-align:center;
   line-height:1.5em;
   color: #fff;
-  text-shadow: 0 0 2px #fff, 0 0 4px #fff; /* glow plus léger */
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff;
   font-weight: 500;
   transition: 0.5s;
 }
-@media (max-width: 600px) {
-  #intro { 
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff; /* glow plus doux sur petit écran */
-    font-size: 0.95em;
-  }
-}
 
-/* ===== BOUTONS ===== */
-button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
+/* ===== BOUTONS VERTICAUX ===== */
+button {
+  display: block;
+  margin: 10px auto;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 button:hover { background: #444; }
 
 /* ===== VITRINE MES CREATIONS VERTICALE ===== */
@@ -115,6 +118,10 @@ footer { margin-top:40px; font-size: 0.9em; }
     <img src="Boxaweedsite/creation6.jpg" onclick="openImage(this.src)">
     <img src="Boxaweedsite/creation7.jpg" onclick="openImage(this.src)">
     <img src="Boxaweedsite/creation8.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation9.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation10.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation11.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation12.jpg" onclick="openImage(this.src)">
   </div>
 </section>
 
@@ -129,6 +136,10 @@ footer { margin-top:40px; font-size: 0.9em; }
     <img src="Boxaweedsite/boite6.jpg" onclick="openImage(this.src)">
     <img src="Boxaweedsite/boite7.jpg" onclick="openImage(this.src)">
     <img src="Boxaweedsite/boite8.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite9.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite10.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite11.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite12.jpg" onclick="openImage(this.src)">
   </div>
 </div>
 
@@ -247,4 +258,4 @@ function openImage(src){
 </script>
 
 </body>
-</html>
+  </html>
