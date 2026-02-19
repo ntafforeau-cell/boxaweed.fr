@@ -11,12 +11,34 @@ h1, h2, h3 { margin: 10px 0; }
 p { margin: 5px 0; }
 a { color: #fff; text-decoration: none; }
 
+/* ===== LOGO ===== */
+#logo {
+  width:180px;
+  margin: 20px auto;
+  display:block;
+}
+
+/* ===== TEXTE INTRODUCTION ===== */
+#intro {
+  max-width:600px;
+  margin:0 auto;
+  text-align:center; /* Centré */
+  line-height:1.5em;
+  padding: 0 20px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff; /* effet brillant */
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
+  100% { text-shadow: 0 0 15px #fff, 0 0 25px #fff; }
+}
+
 /* ===== BANDE HORIZONTALE ===== */
-.bande-defilante { display: flex; overflow: hidden; white-space: nowrap; margin: 20px 0; }
+.bande-defilante { display: flex; overflow: hidden; white-space: nowrap; margin: 20px 0; cursor:pointer; }
 .bande-defilante img { width: 150px; height: 150px; object-fit: cover; margin-right: 10px; transition: transform 0.3s; }
 .bande-defilante img:hover { transform: scale(1.2); }
 @keyframes defile { 0% {transform: translateX(0);} 100% {transform: translateX(-50%);} }
-.defilement { display: flex; animation: defile 20s linear infinite; }
+.defilement { display: flex; animation: defile 15s linear infinite; } /* défilement plus rapide */
 
 /* ===== BOUTONS ===== */
 button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
@@ -24,7 +46,7 @@ button:hover { background: #444; }
 
 /* ===== VITRINE MES CREATIONS ===== */
 #creations { display:none; padding:20px; text-align:center; }
-#creations img { width: 200px; height:200px; object-fit: cover; margin:10px; transition: transform 0.3s; }
+#creations img { width: 150px; height:150px; object-fit: cover; margin:5px; transition: transform 0.3s; cursor:pointer; }
 #creations img:hover { transform: scale(1.1); }
 
 /* ===== BOUTIQUE ===== */
@@ -36,6 +58,19 @@ button:hover { background: #444; }
 .miniatures img { width: 50px; height: 50px; object-fit: cover; cursor: pointer; transition: 0.3s; }
 .miniatures img:hover { transform: scale(1.2); }
 
+/* ===== LOGO INSTAGRAM ===== */
+.insta {
+  width:50px; 
+  margin:20px auto; 
+  cursor:pointer;
+  display:block;
+  animation: breath 4s infinite;
+}
+@keyframes breath {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
 /* ===== FOOTER ===== */
 footer { margin-top:40px; font-size: 0.9em; }
 
@@ -44,34 +79,22 @@ footer { margin-top:40px; font-size: 0.9em; }
   .modal-main { width: 90%; }
   .miniatures img { width: 40px; height: 40px; }
   .bande-defilante img { width: 100px; height: 100px; }
-  #creations img { width: 120px; height: 120px; }
+  #creations img { width: 100px; height: 100px; }
 }
+
 </style>
 </head>
 <body>
 
-<h1>Boxaweed</h1>
+<!-- ===== LOGO ===== -->
+<img src="Boxaweedsite/logo.png" id="logo">
 
 <!-- ===== TEXTE INTRODUCTION ===== -->
-<div id="intro" style="max-width:600px; margin:0 auto; text-align:left; line-height:1.5em; padding: 0 20px;">
+<div id="intro">
 <p>Je vous présente mes créations fabriquées essentiellement avec du bois noble. Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs. Je les transforme et revalorise avec patience et passion.</p>
 <p>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</p>
 <p>Elles sont toutes uniques et numérotées.</p>
 <p>Conçues pour durer. Conçues pour traverser le temps.</p>
-</div>
-
-<!-- ===== BANDE HORIZONTALE ===== -->
-<div class="bande-defilante">
-  <div class="defilement">
-    <img src="Boxaweedsite/boite1.jpg">
-    <img src="Boxaweedsite/boite2.jpg">
-    <img src="Boxaweedsite/boite3.jpg">
-    <img src="Boxaweedsite/boite4.jpg">
-    <img src="Boxaweedsite/boite5.jpg">
-    <img src="Boxaweedsite/boite6.jpg">
-    <img src="Boxaweedsite/boite7.jpg">
-    <img src="Boxaweedsite/boite8.jpg">
-  </div>
 </div>
 
 <!-- ===== BOUTONS ===== -->
@@ -80,14 +103,18 @@ footer { margin-top:40px; font-size: 0.9em; }
 
 <!-- ===== VITRINE MES CREATIONS ===== -->
 <section id="creations">
-  <img src="Boxaweedsite/boite1.jpg">
-  <img src="Boxaweedsite/boite2.jpg">
-  <img src="Boxaweedsite/boite3.jpg">
-  <img src="Boxaweedsite/boite4.jpg">
-  <img src="Boxaweedsite/boite5.jpg">
-  <img src="Boxaweedsite/boite6.jpg">
-  <img src="Boxaweedsite/boite7.jpg">
-  <img src="Boxaweedsite/boite8.jpg">
+  <div class="bande-defilante">
+    <div class="defilement">
+      <img src="Boxaweedsite/boite1.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite2.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite3.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite4.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite5.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite6.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite7.jpg" onclick="openImage(this.src)">
+      <img src="Boxaweedsite/boite8.jpg" onclick="openImage(this.src)">
+    </div>
+  </div>
 </section>
 
 <!-- ===== BOUTIQUE ===== -->
@@ -155,30 +182,55 @@ footer { margin-top:40px; font-size: 0.9em; }
 
 <!-- ===== LOGO INSTAGRAM ===== -->
 <a href="https://www.instagram.com/boxaweed" target="_blank">
-  <img src="Boxaweedsite/logoinsta.png" alt="Instagram" style="width:50px; margin:20px; cursor:pointer;">
+  <img src="Boxaweedsite/logoinsta.png" alt="Instagram" class="insta">
 </a>
+
+<!-- ===== VIDEO YT ===== -->
+<div style="margin:40px;">
+<iframe width="320" height="180"
+src="https://www.youtube.com/embed/"
+frameborder="0" allowfullscreen></iframe>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>Boxaweed 2026</footer>
 
-<!-- ===== JS ===== -->
 <script>
 function changeImage(prod, element) {
-  if(prod === 'A') document.getElementById('mainImageA').src = element.src;
-  if(prod === 'B') document.getElementById('mainImageB').src = element.src;
-  if(prod === 'C') document.getElementById('mainImageC').src = element.src;
+  if(prod==='A') document.getElementById('mainImageA').src = element.src;
+  if(prod==='B') document.getElementById('mainImageB').src = element.src;
+  if(prod==='C') document.getElementById('mainImageC').src = element.src;
 }
 
 function toggleBoutique() {
   const section = document.getElementById('boutique');
-  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+  section.style.display = (section.style.display==='none')?'block':'none';
 }
 
 function toggleCreations() {
   const section = document.getElementById('creations');
-  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+  section.style.display = (section.style.display==='none')?'block':'none';
+}
+
+function openImage(src){
+  let overlay=document.createElement('div');
+  overlay.style.position='fixed';
+  overlay.style.top=0;
+  overlay.style.left=0;
+  overlay.style.width='100%';
+  overlay.style.height='100%';
+  overlay.style.background='rgba(0,0,0,0.9)';
+  overlay.style.display='flex';
+  overlay.style.alignItems='center';
+  overlay.style.justifyContent='center';
+  overlay.style.zIndex=9999;
+  let img=document.createElement('img');
+  img.src=src;
+  img.style.maxWidth='90%';
+  overlay.appendChild(img);
+  overlay.onclick=()=>overlay.remove();
+  document.body.appendChild(overlay);
 }
 </script>
-
 </body>
 </html>
