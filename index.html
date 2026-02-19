@@ -34,8 +34,8 @@ button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor
 button:hover { background: #444; }
 
 /* ===== BANDE HORIZONTALE ===== */
-.bande-defilante { display:flex; overflow:hidden; white-space:nowrap; margin:20px 0; }
-.bande-defilante img { width:150px; height:150px; object-fit:cover; margin-right:10px; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.bande-defilante { display:flex; overflow-x:auto; scroll-behavior:smooth; white-space:nowrap; margin:20px 0; }
+.bande-defilante img { width:150px; height:150px; object-fit:cover; margin-right:10px; transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; cursor:pointer; filter: brightness(1) sepia(0.1); }
 .bande-defilante img:hover { transform: scale(1.1) rotate(2deg); box-shadow:0 0 20px rgba(255,255,255,0.4); filter: brightness(1.2) sepia(0.2); }
 
 /* ===== VITRINE MES CREATIONS ===== */
@@ -137,12 +137,9 @@ footer { margin-top:40px; font-size:0.9em; }
   <img src="Boxaweedsite/boite12.jpg">
 </div>
 
-<!-- ===== BOUTON MA BOUTIQUE ===== -->
-<button onclick="toggleBoutique()">Ma Boutique</button>
-
 <!-- ===== BOUTIQUE ===== -->
 <section id="boutique">
-  <!-- PRODUIT 1 -->
+  <!-- PRODUIT A -->
   <div class="produit">
     <h3>Boxaweed N°38</h3>
     <p><strong>Prix :</strong> 85€</p>
@@ -150,18 +147,19 @@ footer { margin-top:40px; font-size:0.9em; }
     <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
     <p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
     <div class="galerie">
-      <img src="Boxaweedsite/produit1.jpg" id="mainImage1" class="modal-main">
+      <img src="Boxaweedsite/produit1.jpg" id="mainImageA" class="modal-main">
       <div class="miniatures">
-        <img src="Boxaweedsite/produit1.jpg" onclick="changeImage(1,this)">
-        <img src="Boxaweedsite/produit2.jpg" onclick="changeImage(1,this)">
-        <img src="Boxaweedsite/produit3.jpg" onclick="changeImage(1,this)">
-        <img src="Boxaweedsite/produit4.jpg" onclick="changeImage(1,this)">
-        <img src="Boxaweedsite/produit5.jpg" onclick="changeImage(1,this)">
+        <img src="Boxaweedsite/produit1.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit2.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit3.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit4.jpg" onclick="changeImage('A', this)">
+        <img src="Boxaweedsite/produit5.jpg" onclick="changeImage('A', this)">
       </div>
     </div>
-    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/85'">Commander</button>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/85'">Commander</button>
   </div>
-  <!-- PRODUIT 2 -->
+
+  <!-- PRODUIT B -->
   <div class="produit">
     <h3>Boxaweed N°37</h3>
     <p><strong>Prix :</strong> 65€</p>
@@ -169,18 +167,19 @@ footer { margin-top:40px; font-size:0.9em; }
     <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
     <p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
     <div class="galerie">
-      <img src="Boxaweedsite/produit6.jpg" id="mainImage2" class="modal-main">
+      <img src="Boxaweedsite/produit6.jpg" id="mainImageB" class="modal-main">
       <div class="miniatures">
-        <img src="Boxaweedsite/produit6.jpg" onclick="changeImage(2,this)">
-        <img src="Boxaweedsite/produit7.jpg" onclick="changeImage(2,this)">
-        <img src="Boxaweedsite/produit8.jpg" onclick="changeImage(2,this)">
-        <img src="Boxaweedsite/produit9.jpg" onclick="changeImage(2,this)">
-        <img src="Boxaweedsite/produit10.jpg" onclick="changeImage(2,this)">
+        <img src="Boxaweedsite/produit6.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit7.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit8.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit9.jpg" onclick="changeImage('B', this)">
+        <img src="Boxaweedsite/produit10.jpg" onclick="changeImage('B', this)">
       </div>
     </div>
-    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/65'">Commander</button>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/65'">Commander</button>
   </div>
-  <!-- PRODUIT 3 -->
+
+  <!-- PRODUIT C -->
   <div class="produit">
     <h3>Boxaweed N°36</h3>
     <p><strong>Prix :</strong> 75€</p>
@@ -188,16 +187,16 @@ footer { margin-top:40px; font-size:0.9em; }
     <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
     <p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
     <div class="galerie">
-      <img src="Boxaweedsite/produit11.jpg" id="mainImage3" class="modal-main">
+      <img src="Boxaweedsite/produit11.jpg" id="mainImageC" class="modal-main">
       <div class="miniatures">
-        <img src="Boxaweedsite/produit11.jpg" onclick="changeImage(3,this)">
-        <img src="Boxaweedsite/produit12.jpg" onclick="changeImage(3,this)">
-        <img src="Boxaweedsite/produit13.jpg" onclick="changeImage(3,this)">
-        <img src="Boxaweedsite/produit14.jpg" onclick="changeImage(3,this)">
-        <img src="Boxaweedsite/produit15.jpg" onclick="changeImage(3,this)">
+        <img src="Boxaweedsite/produit11.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit12.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit13.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit14.jpg" onclick="changeImage('C', this)">
+        <img src="Boxaweedsite/produit15.jpg" onclick="changeImage('C', this)">
       </div>
     </div>
-    <button onclick="window.location.href='https://www.paypal.com/paypalme/ntafforeau/75'">Commander</button>
+    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/75'">Commander</button>
   </div>
 </section>
 
