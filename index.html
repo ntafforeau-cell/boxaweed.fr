@@ -312,7 +312,7 @@ Mes Créations
 <img src="Boxaweedsite/boite11.jpg" onclick="openModal(this)">
 <img src="Boxaweedsite/boite12.jpg" onclick="openModal(this)">
 
-<!-- duplication -->
+<!-- duplication pour le défilement infini -->
 
 <img src="Boxaweedsite/boite1.jpg" onclick="openModal(this)">
 <img src="Boxaweedsite/boite2.jpg" onclick="openModal(this)">
@@ -338,7 +338,7 @@ Ma Boutique
 </button>
 
 
-<!-- BOUTIQUE COMPLETE -->
+<!-- BOUTIQUE COMPLETE AVEC DESCRIPTIFS -->
 
 <section id="boutique">
 
@@ -346,23 +346,22 @@ Ma Boutique
 
 <h3>Boxaweed N°38</h3>
 
-<p>85€</p>
+<p><strong>Prix :</strong> 85€</p>
+<p><strong>Dimensions :</strong> 17,5cm × 17,5cm × 24cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
 
 <img src="Boxaweedsite/produit1.jpg" id="main1" class="modal-main" onclick="openModal(this)">
 
 <div class="miniatures">
-
 <img src="Boxaweedsite/produit1.jpg" onclick="changeImage('main1',this)">
 <img src="Boxaweedsite/produit2.jpg" onclick="changeImage('main1',this)">
 <img src="Boxaweedsite/produit3.jpg" onclick="changeImage('main1',this)">
 <img src="Boxaweedsite/produit4.jpg" onclick="changeImage('main1',this)">
 <img src="Boxaweedsite/produit5.jpg" onclick="changeImage('main1',this)">
-
 </div>
 
-<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/85')">
-Commander
-</button>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/85')">Commander</button>
 
 </div>
 
@@ -371,23 +370,22 @@ Commander
 
 <h3>Boxaweed N°37</h3>
 
-<p>65€</p>
+<p><strong>Prix :</strong> 65€</p>
+<p><strong>Dimensions :</strong> 16cm × 16cm × 15,5cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
 
 <img src="Boxaweedsite/produit6.jpg" id="main2" class="modal-main" onclick="openModal(this)">
 
 <div class="miniatures">
-
 <img src="Boxaweedsite/produit6.jpg" onclick="changeImage('main2',this)">
 <img src="Boxaweedsite/produit7.jpg" onclick="changeImage('main2',this)">
 <img src="Boxaweedsite/produit8.jpg" onclick="changeImage('main2',this)">
 <img src="Boxaweedsite/produit9.jpg" onclick="changeImage('main2',this)">
 <img src="Boxaweedsite/produit10.jpg" onclick="changeImage('main2',this)">
-
 </div>
 
-<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/65')">
-Commander
-</button>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/65')">Commander</button>
 
 </div>
 
@@ -396,20 +394,19 @@ Commander
 
 <h3>Boxaweed N°36</h3>
 
-<p>75€</p>
+<p><strong>Prix :</strong> 75€</p>
+<p><strong>Dimensions :</strong> 18,5cm × 18,5cm × 27cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
 
 <img src="Boxaweedsite/produit11.jpg" id="main3" class="modal-main" onclick="openModal(this)">
 
 <div class="miniatures">
-
 <img src="Boxaweedsite/produit11.jpg" onclick="changeImage('main3',this)">
 <img src="Boxaweedsite/produit12.jpg" onclick="changeImage('main3',this)">
-
 </div>
 
-<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/75')">
-Commander
-</button>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/75')">Commander</button>
 
 </div>
 
@@ -445,56 +442,38 @@ Commander
 <script>
 
 function toggleMenu(){
-
 let menu=document.getElementById("menuHamburger");
-
 menu.style.display=(menu.style.display==="block")?"none":"block";
-
 }
 
 function toggleCreations(){
-
 let section=document.getElementById("creations");
-
 section.style.display=(section.style.display==="block")?"none":"block";
-
 }
 
 function toggleBoutique(){
-
 let section=document.getElementById("boutique");
-
 section.style.display=(section.style.display==="block")?"none":"block";
-
 }
 
 function scrollToSection(id){
-
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
-
 }
 
 function openModal(img){
-
 document.getElementById("imageModal").style.display="flex";
-
 document.getElementById("modalImg").src=img.src;
-
 }
 
 function closeModal(){
-
 document.getElementById("imageModal").style.display="none";
-
 }
 
 function changeImage(mainId,element){
-
 document.getElementById(mainId).src=element.src;
-
 }
 
 </script>
 
 </body>
-</html>
+     </html>
