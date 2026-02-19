@@ -6,45 +6,62 @@
 <title>Boxaweed</title>
 <style>
 /* ===== STYLE GENERAL ===== */
-body { margin:0; font-family: Arial, sans-serif; background: #111; color: #fff; text-align:center; }
-h1, h2, h3 { margin: 10px 0; }
-p { margin: 5px 0; }
-a { color: #fff; text-decoration: none; }
+body { margin:0; font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
+h1,h2,h3 { margin:10px 0; }
+p { margin:5px 0; }
+a { color:#fff; text-decoration:none; }
 
-/* ===== BANDE HORIZONTALE ===== */
-.bande-defilante { display: flex; overflow: hidden; white-space: nowrap; margin: 20px 0; }
-.bande-defilante img { width: 150px; height: 150px; object-fit: cover; margin-right: 10px; transition: transform 0.3s; }
-.bande-defilante img:hover { transform: scale(1.2); }
-@keyframes defile { 0% {transform: translateX(0);} 100% {transform: translateX(-50%);} }
-.defilement { display: flex; animation: defile 20s linear infinite; }
+/* ===== TEXTE SCINTILLANT ===== */
+#intro { max-width:600px; margin:20px auto; text-align:center; line-height:1.5em; font-size:1.1em; }
+#intro span { animation: scintille 1.5s infinite; display:inline-block; }
+@keyframes scintille {
+  0%,100% {color:#fff;}
+  50% {color:#ffcc00;}
+}
 
 /* ===== BOUTONS ===== */
-button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
-button:hover { background: #444; }
+button { background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; transition:0.3s; margin:10px; }
+button:hover { background:#444; }
 
-/* ===== VITRINE MES CREATIONS ===== */
-#creations { display:none; padding:20px; text-align:center; }
-#creations img { width: 200px; height:200px; object-fit: cover; margin:10px; transition: transform 0.3s; }
-#creations img:hover { transform: scale(1.1); }
+/* ===== EFFET SCINTILLANT SUR BOUTON MES CREATIONS ===== */
+button#btnCreations:hover {
+  animation: scintilleBtn 1.5s infinite;
+}
+@keyframes scintilleBtn {
+  0%,100% { background:#000; color:#fff; }
+  50% { background:#ffcc00; color:#000; }
+}
+
+/* ===== BANDE HORIZONTALE ===== */
+.bande-defilante { display:flex; overflow:hidden; white-space:nowrap; margin:20px 0; }
+.bande-defilante img { width:150px; height:150px; object-fit:cover; margin-right:10px; transition:transform 0.3s; }
+.bande-defilante img:hover { transform:scale(1.2); }
+@keyframes defile { 0% {transform:translateX(0);} 100% {transform:translateX(-50%);} }
+.defilement { display:flex; animation:defile 15s linear infinite; }
+
+/* ===== VITRINE MES CREATIONS SCROLLABLE ===== */
+#creations { display:none; padding:20px; text-align:center; overflow-x:auto; white-space:nowrap; cursor:grab; }
+#creations img { width:200px; height:200px; object-fit:cover; margin:10px; display:inline-block; transition:transform 0.3s; }
+#creations img:hover { transform:scale(1.1); }
 
 /* ===== BOUTIQUE ===== */
-#boutique { display:none; padding: 20px; text-align:center; }
-.produit { margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
-.galerie { display: flex; flex-direction: column; align-items: center; }
-.modal-main { width: 300px; max-width: 90%; margin-bottom: 10px; }
-.miniatures { display: flex; gap: 5px; justify-content: center; }
-.miniatures img { width: 50px; height: 50px; object-fit: cover; cursor: pointer; transition: 0.3s; }
-.miniatures img:hover { transform: scale(1.2); }
+#boutique { display:none; padding:20px; text-align:center; }
+.produit { margin-bottom:40px; border-bottom:1px solid #ccc; padding-bottom:20px; }
+.galerie { display:flex; flex-direction:column; align-items:center; }
+.modal-main { width:300px; max-width:90%; margin-bottom:10px; }
+.miniatures { display:flex; gap:5px; justify-content:center; }
+.miniatures img { width:50px; height:50px; object-fit:cover; cursor:pointer; transition:0.3s; }
+.miniatures img:hover { transform:scale(1.2); }
 
 /* ===== FOOTER ===== */
-footer { margin-top:40px; font-size: 0.9em; }
+footer { margin-top:40px; font-size:0.9em; }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .modal-main { width: 90%; }
-  .miniatures img { width: 40px; height: 40px; }
-  .bande-defilante img { width: 100px; height: 100px; }
-  #creations img { width: 120px; height: 120px; }
+@media (max-width:600px) {
+  .modal-main { width:90%; }
+  .miniatures img { width:40px; height:40px; }
+  .bande-defilante img { width:100px; height:100px; }
+  #creations img { width:120px; height:120px; }
 }
 </style>
 </head>
@@ -53,12 +70,29 @@ footer { margin-top:40px; font-size: 0.9em; }
 <h1>Boxaweed</h1>
 
 <!-- ===== TEXTE INTRODUCTION ===== -->
-<div id="intro" style="max-width:600px; margin:0 auto; text-align:left; line-height:1.5em; padding: 0 20px;">
-<p>Je vous présente mes créations fabriquées essentiellement avec du bois noble. Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs. Je les transforme et revalorise avec patience et passion.</p>
-<p>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</p>
-<p>Elles sont toutes uniques et numérotées.</p>
-<p>Conçues pour durer. Conçues pour traverser le temps.</p>
+<div id="intro">
+<span>Je vous présente mes créations fabriquées essentiellement avec du bois noble.</span><br>
+<span>Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs.</span><br>
+<span>Je les transforme et revalorise avec patience et passion.</span><br>
+<span>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</span><br>
+<span>Elles sont toutes uniques et numérotées.</span><br>
+<span>Conçues pour durer. Conçues pour traverser le temps.</span>
 </div>
+
+<!-- ===== BOUTON MES CREATIONS ===== -->
+<button id="btnCreations" onclick="toggleCreations()">Mes Créations</button>
+
+<!-- ===== VITRINE MES CREATIONS SCROLLABLE ===== -->
+<section id="creations">
+  <img src="Boxaweedsite/boite1.jpg">
+  <img src="Boxaweedsite/boite2.jpg">
+  <img src="Boxaweedsite/boite3.jpg">
+  <img src="Boxaweedsite/boite4.jpg">
+  <img src="Boxaweedsite/boite5.jpg">
+  <img src="Boxaweedsite/boite6.jpg">
+  <img src="Boxaweedsite/boite7.jpg">
+  <img src="Boxaweedsite/boite8.jpg">
+</section>
 
 <!-- ===== BANDE HORIZONTALE ===== -->
 <div class="bande-defilante">
@@ -74,21 +108,8 @@ footer { margin-top:40px; font-size: 0.9em; }
   </div>
 </div>
 
-<!-- ===== BOUTONS ===== -->
-<button onclick="toggleCreations()">Mes Créations</button>
+<!-- ===== BOUTON MA BOUTIQUE ===== -->
 <button onclick="toggleBoutique()">Ma Boutique</button>
-
-<!-- ===== VITRINE MES CREATIONS ===== -->
-<section id="creations">
-  <img src="Boxaweedsite/boite1.jpg">
-  <img src="Boxaweedsite/boite2.jpg">
-  <img src="Boxaweedsite/boite3.jpg">
-  <img src="Boxaweedsite/boite4.jpg">
-  <img src="Boxaweedsite/boite5.jpg">
-  <img src="Boxaweedsite/boite6.jpg">
-  <img src="Boxaweedsite/boite7.jpg">
-  <img src="Boxaweedsite/boite8.jpg">
-</section>
 
 <!-- ===== BOUTIQUE ===== -->
 <section id="boutique">
@@ -161,24 +182,44 @@ footer { margin-top:40px; font-size: 0.9em; }
 <!-- ===== FOOTER ===== -->
 <footer>Boxaweed 2026</footer>
 
-<!-- ===== JS ===== -->
 <script>
+/* ===== GALERIE PRODUITS ===== */
 function changeImage(prod, element) {
-  if(prod === 'A') document.getElementById('mainImageA').src = element.src;
-  if(prod === 'B') document.getElementById('mainImageB').src = element.src;
-  if(prod === 'C') document.getElementById('mainImageC').src = element.src;
+  if(prod==='A') document.getElementById('mainImageA').src = element.src;
+  if(prod==='B') document.getElementById('mainImageB').src = element.src;
+  if(prod==='C') document.getElementById('mainImageC').src = element.src;
 }
 
+/* ===== TOGGLE SECTIONS ===== */
 function toggleBoutique() {
   const section = document.getElementById('boutique');
-  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+  section.style.display = (section.style.display==='none')?'block':'none';
 }
-
 function toggleCreations() {
   const section = document.getElementById('creations');
-  section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+  section.style.display = (section.style.display==='none')?'block':'none';
 }
+
+/* ===== SCROLL BOUTON DRAG ===== */
+const creations = document.getElementById('creations');
+let isDown = false, startX, scrollLeft;
+
+creations.addEventListener('mousedown', e=>{
+  isDown=true;
+  creations.classList.add('active');
+  startX=e.pageX - creations.offsetLeft;
+  scrollLeft=creations.scrollLeft;
+});
+creations.addEventListener('mouseleave', ()=>isDown=false);
+creations.addEventListener('mouseup', ()=>isDown=false);
+creations.addEventListener('mousemove', e=>{
+  if(!isDown) return;
+  e.preventDefault();
+  const x=e.pageX - creations.offsetLeft;
+  const walk=(x-startX)*2;
+  creations.scrollLeft=scrollLeft - walk;
+});
 </script>
 
 </body>
-</html>
+      </html>
