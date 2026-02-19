@@ -17,7 +17,7 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* ===== INTRO CINEMA ===== */
+/* ===== INTRO SAFE ===== */
 #introScreen{
 position:fixed;
 top:0;
@@ -30,40 +30,16 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 z-index:99999;
-animation:fadeOut 2s ease 4s forwards;
 }
 
 #introLogo{
 width:200px;
-opacity:0;
-transform:scale(0.6);
-animation:logoReveal 3s ease forwards;
-}
-
-@keyframes logoReveal{
-0%{
-opacity:0;
-transform:scale(0.6);
-filter:blur(10px);
-}
-100%{
-opacity:1;
-transform:scale(1);
-filter:blur(0);
-}
-}
-
-@keyframes fadeOut{
-to{
-opacity:0;
-visibility:hidden;
-}
 }
 
 /* ===== SITE ===== */
 #mainSite{
-opacity:0;
-animation:siteReveal 2s ease 4.5s forwards;
+opacity:0; /* deviendra 1 quand le logo est chargé */
+transition:opacity 1s ease;
 }
 
 /* ===== LOGO ===== */
@@ -83,12 +59,8 @@ max-width:700px;
 margin:40px auto;
 font-size:20px;
 line-height:1.6;
-opacity:0;
-animation:textReveal 3s ease 5s forwards;
-}
-@keyframes textReveal{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);text-shadow:0 0 20px rgba(255,255,255,0.6);}
+text-align:center;
+text-shadow:0 0 20px rgba(255,255,255,0.4);
 }
 
 /* ===== BOUTONS ===== */
@@ -201,9 +173,10 @@ text-decoration:none;
 </head>
 <body>
 
-<!-- INTRO CINEMA -->
+<!-- INTRO SAFE -->
 <div id="introScreen">
-<img src="logo.png" id="introLogo">
+<img src="logo.png" id="introLogo"
+     onload="document.getElementById('mainSite').style.opacity='1'; this.parentNode.style.display='none';">
 </div>
 
 <!-- SITE -->
@@ -254,7 +227,7 @@ frameborder="0" allowfullscreen></iframe>
 <footer>Boxaweed 2026</footer>
 </div>
 
-<!-- ===== BOUTIQUE IMMERSIVE COMPLETE ===== -->
+<!-- ===== BOUTIQUE COMPLETE ===== -->
 <div id="boutiqueOverlay">
 
 <button onclick="closeBoutique()" style="
