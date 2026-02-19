@@ -12,42 +12,42 @@ p { margin: 5px 0; }
 a { color: #fff; text-decoration: none; }
 
 /* ===== LOGO ===== */
-#logo {
-  width:180px;
-  margin: 20px auto;
-  display:block;
-}
+#logo { width:180px; margin: 20px auto; display:block; }
 
 /* ===== TEXTE INTRODUCTION ===== */
 #intro {
   max-width:600px;
   margin:0 auto;
-  text-align:center; /* Centré */
+  text-align:center;
   line-height:1.5em;
   padding: 0 20px;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff; /* effet brillant */
-  animation: glow 2s infinite alternate;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+  animation: glow 3s infinite alternate;
 }
 @keyframes glow {
-  0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
-  100% { text-shadow: 0 0 15px #fff, 0 0 25px #fff; }
+  0% { text-shadow: 0 0 2px #fff, 0 0 5px #fff; }
+  100% { text-shadow: 0 0 6px #fff, 0 0 12px #fff; }
 }
+
+/* ===== BOUTONS ===== */
+button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
+button:hover { background: #444; }
+
+/* ===== VITRINE MES CREATIONS VERTICALE ===== */
+#creations { display:none; padding:20px; text-align:center; }
+#creations img {
+  width: 200px; height:200px; object-fit: cover; margin:10px;
+  transition: transform 0.3s; cursor:pointer;
+}
+#creations img:hover { transform: scale(1.1); }
 
 /* ===== BANDE HORIZONTALE ===== */
 .bande-defilante { display: flex; overflow: hidden; white-space: nowrap; margin: 20px 0; cursor:pointer; }
 .bande-defilante img { width: 150px; height: 150px; object-fit: cover; margin-right: 10px; transition: transform 0.3s; }
 .bande-defilante img:hover { transform: scale(1.2); }
 @keyframes defile { 0% {transform: translateX(0);} 100% {transform: translateX(-50%);} }
-.defilement { display: flex; animation: defile 15s linear infinite; } /* défilement plus rapide */
-
-/* ===== BOUTONS ===== */
-button { background: #000; color: #fff; border: none; padding: 10px 20px; cursor: pointer; transition: 0.3s; margin:10px; }
-button:hover { background: #444; }
-
-/* ===== VITRINE MES CREATIONS ===== */
-#creations { display:none; padding:20px; text-align:center; }
-#creations img { width: 150px; height:150px; object-fit: cover; margin:5px; transition: transform 0.3s; cursor:pointer; }
-#creations img:hover { transform: scale(1.1); }
+.defilement { display: flex; animation: defile 15s linear infinite; }
 
 /* ===== BOUTIQUE ===== */
 #boutique { display:none; padding: 20px; text-align:center; }
@@ -59,17 +59,8 @@ button:hover { background: #444; }
 .miniatures img:hover { transform: scale(1.2); }
 
 /* ===== LOGO INSTAGRAM ===== */
-.insta {
-  width:50px; 
-  margin:20px auto; 
-  cursor:pointer;
-  display:block;
-  animation: breath 4s infinite;
-}
-@keyframes breath {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
+.insta { width:50px; margin:20px auto; cursor:pointer; display:block; animation: breath 4s infinite; }
+@keyframes breath { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
 /* ===== FOOTER ===== */
 footer { margin-top:40px; font-size: 0.9em; }
@@ -78,10 +69,9 @@ footer { margin-top:40px; font-size: 0.9em; }
 @media (max-width: 600px) {
   .modal-main { width: 90%; }
   .miniatures img { width: 40px; height: 40px; }
+  #creations img { width: 120px; height: 120px; }
   .bande-defilante img { width: 100px; height: 100px; }
-  #creations img { width: 100px; height: 100px; }
 }
-
 </style>
 </head>
 <body>
@@ -101,21 +91,33 @@ footer { margin-top:40px; font-size: 0.9em; }
 <button onclick="toggleCreations()">Mes Créations</button>
 <button onclick="toggleBoutique()">Ma Boutique</button>
 
-<!-- ===== VITRINE MES CREATIONS ===== -->
+<!-- ===== VITRINE MES CREATIONS VERTICALE ===== -->
 <section id="creations">
-  <div class="bande-defilante">
-    <div class="defilement">
-      <img src="Boxaweedsite/boite1.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite2.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite3.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite4.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite5.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite6.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite7.jpg" onclick="openImage(this.src)">
-      <img src="Boxaweedsite/boite8.jpg" onclick="openImage(this.src)">
-    </div>
+  <div>
+    <img src="Boxaweedsite/creation1.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation2.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation3.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation4.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation5.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation6.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation7.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/creation8.jpg" onclick="openImage(this.src)">
   </div>
 </section>
+
+<!-- ===== BANDE HORIZONTALE ===== -->
+<div class="bande-defilante">
+  <div class="defilement">
+    <img src="Boxaweedsite/boite1.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite2.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite3.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite4.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite5.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite6.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite7.jpg" onclick="openImage(this.src)">
+    <img src="Boxaweedsite/boite8.jpg" onclick="openImage(this.src)">
+  </div>
+</div>
 
 <!-- ===== BOUTIQUE ===== -->
 <section id="boutique">
@@ -232,5 +234,6 @@ function openImage(src){
   document.body.appendChild(overlay);
 }
 </script>
+
 </body>
 </html>
