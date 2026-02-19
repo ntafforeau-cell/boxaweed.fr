@@ -3,223 +3,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boxaweed</title>
-<style>
-/* ===== STYLE GENERAL ===== */
-body { margin:0; font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; }
-h1,h2,h3 { margin:10px 0; }
-p { margin:5px 0; }
-a { color:#fff; text-decoration:none; }
 
-/* ===== TEXTE SCINTILLANT ===== */
-#intro { max-width:600px; margin:20px auto; text-align:center; line-height:1.5em; font-size:1.1em; }
-#intro span { animation: scintille 1.5s infinite; display:inline-block; }
-@keyframes scintille {
-  0%,100% {color:#fff;}
-  50% {color:#ffcc00;}
+<title>Boxaweed</title>
+
+<style>
+
+/* ===== RESET ===== */
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial, sans-serif;
+text-align:center;
+overflow-x:hidden;
 }
+
+
+/* ===== INTRO CINEMATOGRAPHIQUE ===== */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation: fadeOutIntro 3s forwards;
+animation-delay:2s;
+}
+
+#intro img{
+width:120px;
+margin-bottom:20px;
+animation: zoomLogo 2s ease;
+}
+
+@keyframes zoomLogo{
+0%{transform:scale(0.5);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeOutIntro{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+
+/* ===== LOGO ===== */
+
+#logo{
+width:120px;
+margin-top:20px;
+animation: apparition 2s ease;
+}
+
+@keyframes apparition{
+from{opacity:0; transform:translateY(-20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+
+/* ===== TEXTE INTRO ===== */
+
+#introText{
+max-width:800px;
+margin:40px auto;
+font-size:20px;
+line-height:1.6;
+animation: scintille 3s infinite alternate;
+}
+
+@keyframes scintille{
+0%{text-shadow:0 0 5px white;}
+50%{text-shadow:0 0 20px gold;}
+100%{text-shadow:0 0 5px white;}
+}
+
 
 /* ===== BOUTONS ===== */
-button { background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; transition:0.3s; margin:10px; }
-button:hover { background:#444; }
 
-/* ===== EFFET SCINTILLANT SUR BOUTON MES CREATIONS ===== */
-button#btnCreations:hover {
-  animation: scintilleBtn 1.5s infinite;
+button{
+background:white;
+color:black;
+border:none;
+padding:15px 30px;
+margin:20px;
+font-size:18px;
+cursor:pointer;
+border-radius:5px;
 }
-@keyframes scintilleBtn {
-  0%,100% { background:#000; color:#fff; }
-  50% { background:#ffcc00; color:#000; }
+
+button:hover{
+background:gold;
 }
+
+
+/* ===== CREATIONS VERTICALES ===== */
+
+#creations{
+display:none;
+flex-direction:column;
+align-items:center;
+}
+
+#creations img{
+width:90%;
+max-width:500px;
+margin:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+#creations img:hover{
+transform:scale(1.05);
+}
+
 
 /* ===== BANDE HORIZONTALE ===== */
-.bande-defilante { display:flex; overflow:hidden; white-space:nowrap; margin:20px 0; }
-.bande-defilante img { width:150px; height:150px; object-fit:cover; margin-right:10px; transition:transform 0.3s; }
-.bande-defilante img:hover { transform:scale(1.2); }
-@keyframes defile { 0% {transform:translateX(0);} 100% {transform:translateX(-50%);} }
-.defilement { display:flex; animation:defile 15s linear infinite; }
 
-/* ===== VITRINE MES CREATIONS SCROLLABLE ===== */
-#creations { display:none; padding:20px; text-align:center; overflow-x:auto; white-space:nowrap; cursor:grab; }
-#creations img { width:200px; height:200px; object-fit:cover; margin:10px; display:inline-block; transition:transform 0.3s; }
-#creations img:hover { transform:scale(1.1); }
-
-/* ===== BOUTIQUE ===== */
-#boutique { display:none; padding:20px; text-align:center; }
-.produit { margin-bottom:40px; border-bottom:1px solid #ccc; padding-bottom:20px; }
-.galerie { display:flex; flex-direction:column; align-items:center; }
-.modal-main { width:300px; max-width:90%; margin-bottom:10px; }
-.miniatures { display:flex; gap:5px; justify-content:center; }
-.miniatures img { width:50px; height:50px; object-fit:cover; cursor:pointer; transition:0.3s; }
-.miniatures img:hover { transform:scale(1.2); }
-
-/* ===== FOOTER ===== */
-footer { margin-top:40px; font-size:0.9em; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width:600px) {
-  .modal-main { width:90%; }
-  .miniatures img { width:40px; height:40px; }
-  .bande-defilante img { width:100px; height:100px; }
-  #creations img { width:120px; height:120px; }
+#bande{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding:20px;
+scroll-behavior:smooth;
 }
+
+#bande img{
+height:180px;
+cursor:pointer;
+transition:transform 8s linear;
+}
+
+#bande img:hover{
+transform:scale(1.2);
+}
+
+#bande::-webkit-scrollbar{
+display:none;
+}
+
+
+/* ===== INSTAGRAM ===== */
+
+#insta{
+margin:50px 0;
+}
+
+#insta img{
+width:80px;
+animation: respire 2s infinite;
+}
+
+@keyframes respire{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.2);}
+}
+
+
+/* ===== VIDEO ===== */
+
+iframe{
+margin-top:40px;
+max-width:90%;
+}
+
+
+/* ===== SIGNATURE ===== */
+
+footer{
+margin:50px;
+opacity:0.6;
+}
+
 </style>
+
 </head>
 <body>
 
-<h1>Boxaweed</h1>
 
-<!-- ===== TEXTE INTRODUCTION ===== -->
+<!-- INTRO CINEMA -->
+
 <div id="intro">
-<span>Je vous présente mes créations fabriquées essentiellement avec du bois noble.</span><br>
-<span>Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs.</span><br>
-<span>Je les transforme et revalorise avec patience et passion.</span><br>
-<span>Chaque pièce est façonnée à la main, sans modèle, sans répétition.</span><br>
-<span>Elles sont toutes uniques et numérotées.</span><br>
-<span>Conçues pour durer. Conçues pour traverser le temps.</span>
+
+<img src="logo.png">
+
 </div>
 
-<!-- ===== BOUTON MES CREATIONS ===== -->
-<button id="btnCreations" onclick="toggleCreations()">Mes Créations</button>
 
-<!-- ===== VITRINE MES CREATIONS SCROLLABLE ===== -->
-<section id="creations">
-  <img src="Boxaweedsite/boite1.jpg">
-  <img src="Boxaweedsite/boite2.jpg">
-  <img src="Boxaweedsite/boite3.jpg">
-  <img src="Boxaweedsite/boite4.jpg">
-  <img src="Boxaweedsite/boite5.jpg">
-  <img src="Boxaweedsite/boite6.jpg">
-  <img src="Boxaweedsite/boite7.jpg">
-  <img src="Boxaweedsite/boite8.jpg">
-</section>
 
-<!-- ===== BANDE HORIZONTALE ===== -->
-<div class="bande-defilante">
-  <div class="defilement">
-    <img src="Boxaweedsite/boite1.jpg">
-    <img src="Boxaweedsite/boite2.jpg">
-    <img src="Boxaweedsite/boite3.jpg">
-    <img src="Boxaweedsite/boite4.jpg">
-    <img src="Boxaweedsite/boite5.jpg">
-    <img src="Boxaweedsite/boite6.jpg">
-    <img src="Boxaweedsite/boite7.jpg">
-    <img src="Boxaweedsite/boite8.jpg">
-  </div>
+<!-- LOGO -->
+
+<img src="logo.png" id="logo">
+
+
+
+<!-- TEXTE -->
+
+<div id="introText">
+
+Je vous présente mes créations fabriquées essentiellement avec du bois noble.<br><br>
+
+Des morceaux parfois voués à disparaître en fumée car pas suffisamment droits ou longs.<br>
+Je les transforme et revalorise avec patience et passion.<br><br>
+
+Chaque pièce est façonnée à la main, sans modèle, sans répétition.<br><br>
+
+Elles sont toutes uniques et numérotées.<br><br>
+
+Conçues pour durer.<br>
+Conçues pour traverser le temps.
+
 </div>
 
-<!-- ===== BOUTON MA BOUTIQUE ===== -->
-<button onclick="toggleBoutique()">Ma Boutique</button>
 
-<!-- ===== BOUTIQUE ===== -->
-<section id="boutique">
-  <!-- PRODUIT A -->
-  <div class="produit">
-    <h3>Boxaweed N°38</h3>
-    <p><strong>Prix :</strong> 85€</p>
-    <p><strong>Dimensions :</strong> 17,5cm × 17,5cm × 24cm</p>
-    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
-    <p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
-    <div class="galerie">
-      <img src="Boxaweedsite/produit1.jpg" id="mainImageA" class="modal-main">
-      <div class="miniatures">
-        <img src="Boxaweedsite/produit1.jpg" onclick="changeImage('A', this)">
-        <img src="Boxaweedsite/produit2.jpg" onclick="changeImage('A', this)">
-        <img src="Boxaweedsite/produit3.jpg" onclick="changeImage('A', this)">
-        <img src="Boxaweedsite/produit4.jpg" onclick="changeImage('A', this)">
-        <img src="Boxaweedsite/produit5.jpg" onclick="changeImage('A', this)">
-      </div>
-    </div>
-    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/85'">Commander</button>
-  </div>
 
-  <!-- PRODUIT B -->
-  <div class="produit">
-    <h3>Boxaweed N°37</h3>
-    <p><strong>Prix :</strong> 65€</p>
-    <p><strong>Dimensions :</strong> 16cm × 16cm × 15,5cm</p>
-    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
-    <p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
-    <div class="galerie">
-      <img src="Boxaweedsite/produit6.jpg" id="mainImageB" class="modal-main">
-      <div class="miniatures">
-        <img src="Boxaweedsite/produit6.jpg" onclick="changeImage('B', this)">
-        <img src="Boxaweedsite/produit7.jpg" onclick="changeImage('B', this)">
-        <img src="Boxaweedsite/produit8.jpg" onclick="changeImage('B', this)">
-        <img src="Boxaweedsite/produit9.jpg" onclick="changeImage('B', this)">
-        <img src="Boxaweedsite/produit10.jpg" onclick="changeImage('B', this)">
-      </div>
-    </div>
-    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/65'">Commander</button>
-  </div>
+<!-- BOUTON CREATIONS -->
 
-  <!-- PRODUIT C -->
-  <div class="produit">
-    <h3>Boxaweed N°36</h3>
-    <p><strong>Prix :</strong> 75€</p>
-    <p><strong>Dimensions :</strong> 18,5cm × 18,5cm × 27cm</p>
-    <p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
-    <p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
-    <div class="galerie">
-      <img src="Boxaweedsite/produit11.jpg" id="mainImageC" class="modal-main">
-      <div class="miniatures">
-        <img src="Boxaweedsite/produit11.jpg" onclick="changeImage('C', this)">
-        <img src="Boxaweedsite/produit12.jpg" onclick="changeImage('C', this)">
-        <img src="Boxaweedsite/produit13.jpg" onclick="changeImage('C', this)">
-        <img src="Boxaweedsite/produit14.jpg" onclick="changeImage('C', this)">
-        <img src="Boxaweedsite/produit15.jpg" onclick="changeImage('C', this)">
-      </div>
-    </div>
-    <button onclick="location.href='https://www.paypal.com/paypalme/ntafforeau/75'">Commander</button>
-  </div>
-</section>
+<button onclick="toggleCreations()">
+Mes créations
+</button>
 
-<!-- ===== LOGO INSTAGRAM ===== -->
-<a href="https://www.instagram.com/boxaweed" target="_blank">
-  <img src="Boxaweedsite/logoinsta.png" alt="Instagram" style="width:50px; margin:20px; cursor:pointer;">
+
+
+<!-- CREATIONS -->
+
+<div id="creations">
+
+<img src="creation1.jpg" onclick="openImage(this.src)">
+<img src="creation2.jpg" onclick="openImage(this.src)">
+<img src="creation3.jpg" onclick="openImage(this.src)">
+<img src="creation4.jpg" onclick="openImage(this.src)">
+<img src="creation5.jpg" onclick="openImage(this.src)">
+
+</div>
+
+
+
+<!-- BANDE -->
+
+<div id="bande">
+
+<img src="boite1.jpg" onclick="openImage(this.src)">
+<img src="boite2.jpg" onclick="openImage(this.src)">
+<img src="boite3.jpg" onclick="openImage(this.src)">
+<img src="boite4.jpg" onclick="openImage(this.src)">
+<img src="boite5.jpg" onclick="openImage(this.src)">
+<img src="boite6.jpg" onclick="openImage(this.src)">
+
+</div>
+
+
+
+<!-- BOUTON BOUTIQUE -->
+
+<button onclick="toggleBoutique()">
+Ma boutique
+</button>
+
+
+
+<!-- BOUTIQUE -->
+
+<div id="boutique" style="display:none;">
+
+<p>Boutique active</p>
+
+</div>
+
+
+
+<!-- INSTAGRAM -->
+
+<div id="insta">
+
+<a href="https://instagram.com/boxaweed" target="_blank">
+
+<img src="logoinsta.png">
+
 </a>
 
-<!-- ===== FOOTER ===== -->
-<footer>Boxaweed 2026</footer>
+</div>
+
+
+
+<!-- VIDEO -->
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/YOUTUBE_ID"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+
+
+<!-- SIGNATURE -->
+
+<footer>
+
+Boxaweed 2026
+
+</footer>
+
+
 
 <script>
-/* ===== GALERIE PRODUITS ===== */
-function changeImage(prod, element) {
-  if(prod==='A') document.getElementById('mainImageA').src = element.src;
-  if(prod==='B') document.getElementById('mainImageB').src = element.src;
-  if(prod==='C') document.getElementById('mainImageC').src = element.src;
+
+
+function toggleCreations(){
+
+let x=document.getElementById("creations");
+
+x.style.display=
+x.style.display==="flex"
+?"none":"flex";
+
 }
 
-/* ===== TOGGLE SECTIONS ===== */
-function toggleBoutique() {
-  const section = document.getElementById('boutique');
-  section.style.display = (section.style.display==='none')?'block':'none';
-}
-function toggleCreations() {
-  const section = document.getElementById('creations');
-  section.style.display = (section.style.display==='none')?'block':'none';
+
+function toggleBoutique(){
+
+let x=document.getElementById("boutique");
+
+x.style.display=
+x.style.display==="block"
+?"none":"block";
+
 }
 
-/* ===== SCROLL BOUTON DRAG ===== */
-const creations = document.getElementById('creations');
-let isDown = false, startX, scrollLeft;
 
-creations.addEventListener('mousedown', e=>{
-  isDown=true;
-  creations.classList.add('active');
-  startX=e.pageX - creations.offsetLeft;
-  scrollLeft=creations.scrollLeft;
-});
-creations.addEventListener('mouseleave', ()=>isDown=false);
-creations.addEventListener('mouseup', ()=>isDown=false);
-creations.addEventListener('mousemove', e=>{
-  if(!isDown) return;
-  e.preventDefault();
-  const x=e.pageX - creations.offsetLeft;
-  const walk=(x-startX)*2;
-  creations.scrollLeft=scrollLeft - walk;
-});
+function openImage(src){
+
+let overlay=document.createElement("div");
+
+overlay.style.position="fixed";
+overlay.style.top="0";
+overlay.style.left="0";
+overlay.style.width="100%";
+overlay.style.height="100%";
+overlay.style.background="black";
+overlay.style.display="flex";
+overlay.style.justifyContent="center";
+overlay.style.alignItems="center";
+
+let img=document.createElement("img");
+
+img.src=src;
+img.style.maxWidth="95%";
+img.style.maxHeight="95%";
+
+overlay.appendChild(img);
+
+overlay.onclick=()=>overlay.remove();
+
+document.body.appendChild(overlay);
+
+}
+
+
+/* scroll auto bande */
+
+let bande=document.getElementById("bande");
+
+setInterval(()=>{
+bande.scrollLeft+=1;
+},30);
+
+
 </script>
 
+
 </body>
-      </html>
+</html>
