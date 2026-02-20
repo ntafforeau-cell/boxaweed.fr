@@ -1,15 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="google-site-verification" content="lQLEytZIG3b86bjEIGsBKMi3ix0_B5DsiR_I_kiQeX4" />
-<meta name="description" content="Boxaweed crée des boîtes artisanales uniques en bois noble. Fabrication artisanale, personnalisable, pièces uniques." />
-<meta name="robots" content="index, follow">
-
-<title>Boxaweed | Boîtes artisanales en bois noble faites main</title>
+<title>Boxaweed</title>
 
 <style>
 
@@ -46,7 +41,7 @@ button:hover{
   display:block;
 }
 
-/* ===== HAMBURGER ===== */
+/* ===== HAMBURGER BLANC FOND / TRAITS NOIRS ===== */
 .hamburger{
   position:fixed;
   top:10px;
@@ -96,16 +91,23 @@ button:hover{
   padding:0 20px;
 }
 
+#commande p{
+  margin-bottom:20px;
+  font-size:1.1em;
+}
+
 /* ===== BANDE DEFILANTE ===== */
 .bande-wrapper{
   overflow-x:auto;
   white-space:nowrap;
   width:100%;
   margin:40px 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bande-defilante{
   display:flex;
+  flex-wrap:nowrap;
 }
 
 .bande-defilante img{
@@ -114,6 +116,11 @@ button:hover{
   object-fit:cover;
   margin-right:15px;
   cursor:pointer;
+  transition:0.3s;
+}
+
+.bande-defilante img:hover{
+  transform:scale(1.1);
 }
 
 /* ===== CREATIONS ===== */
@@ -125,9 +132,14 @@ button:hover{
 #creations img{
   width:200px;
   height:200px;
-  margin:15px;
   object-fit:cover;
+  margin:15px;
   cursor:pointer;
+  transition:0.3s;
+}
+
+#creations img:hover{
+  transform:scale(1.1);
 }
 
 /* ===== BOUTIQUE ===== */
@@ -142,19 +154,23 @@ button:hover{
   padding-bottom:30px;
 }
 
+.produit img{
+  cursor:pointer;
+}
+
 .modal-main{
   width:300px;
   max-width:90%;
+  margin-bottom:10px;
 }
 
 .miniatures img{
   width:60px;
   height:60px;
   margin:5px;
-  cursor:pointer;
 }
 
-/* ===== SOCIAL ===== */
+/* ===== INSTAGRAM & BOUTIQUE BUTTONS ===== */
 .social-boutique{
   display:flex;
   flex-direction:column;
@@ -165,6 +181,7 @@ button:hover{
 
 .social-boutique img{
   width:50px;
+  cursor:pointer;
 }
 
 /* ===== YOUTUBE ===== */
@@ -172,13 +189,16 @@ button:hover{
   width:90%;
   max-width:400px;
   height:225px;
+  margin:40px 0;
 }
 
-/* ===== MODAL ===== */
+/* ===== MODAL IMAGE ===== */
 #imageModal{
   display:none;
   position:fixed;
   z-index:2000;
+  left:0;
+  top:0;
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.95);
@@ -201,200 +221,198 @@ button:hover{
 
 </style>
 </head>
-
 <body>
 
+<!-- LOGO -->
 <img src="Boxaweedsite/logo.png" class="logo">
 
+<!-- HAMBURGER -->
 <div class="hamburger" onclick="toggleMenu()">
-<div></div>
-<div></div>
-<div></div>
+  <div></div>
+  <div></div>
+  <div></div>
 </div>
 
 <div class="menu" id="menuHamburger">
-
-<button onclick="scrollToSection('commande')">
-Créer ma boîte
-</button>
-
-<button onclick="toggleCreations()">
-Mes Créations
-</button>
-
-<button onclick="toggleBoutique()">
-Ma Boutique
-</button>
-
-<button onclick="scrollToSection('youtube')">
-Vidéo YouTube
-</button>
-
+  <button onclick="scrollToSection('commande')">Créer ma boîte</button>
+  <button onclick="toggleCreations()">Mes Créations</button>
+  <button onclick="toggleBoutique()">Ma Boutique</button>
+  <button onclick="scrollToSection('youtube')">Vidéo YouTube</button>
 </div>
 
+<!-- INTRO -->
 <div id="intro">
-
-<p>
-Je vous présente mes créations fabriquées essentiellement avec du bois noble.
-</p>
-
-<p>
-Chaque pièce est unique et façonnée à la main.
-</p>
-
-<p>
-Conçues pour durer.
-</p>
-
+  <p>Je vous présente mes créations fabriquées essentiellement avec du bois noble.</p>
+  <p>Chaque pièce est unique et façonnée à la main.</p>
+  <p>Conçues pour durer.</p>
 </div>
 
+<!-- COMMANDE -->
 <div id="commande">
-
-<p>
-Chaque création peut être réalisée sur commande et personnalisée.
-</p>
-
-<button onclick="window.location.href='mailto:ntafforeau@gmail.com'">
-Créer ma boîte / Personnaliser ma boîte
-</button>
-
+  <p>Chaque création peut être réalisée sur commande et personnalisée.</p>
+  <button onclick="window.location.href='mailto:ntafforeau@gmail.com'">Créer ma boîte / Personnaliser ma boîte</button>
 </div>
 
-<button onclick="toggleCreations()">
-Mes Créations
-</button>
+<!-- BOUTON CREATIONS -->
+<button onclick="toggleCreations()">Mes Créations</button>
 
+<!-- CREATIONS -->
 <section id="creations">
-
-<img src="Boxaweedsite/creation1.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation2.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation3.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation4.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation5.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation6.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation7.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation8.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation9.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation10.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation11.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/creation12.jpg" onclick="openModal(this)">
-
+  <img src="Boxaweedsite/creation1.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation2.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation3.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation4.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation5.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation6.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation7.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation8.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation9.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation10.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation11.jpg" onclick="openModal(this)">
+  <img src="Boxaweedsite/creation12.jpg" onclick="openModal(this)">
 </section>
 
+<!-- BANDE DEFILANTE -->
 <div class="bande-wrapper">
-<div class="bande-defilante" id="bandeDefilante">
-
-<img src="Boxaweedsite/boite1.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite2.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite3.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite4.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite5.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite6.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite7.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite8.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite9.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite10.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite11.jpg" onclick="openModal(this)">
-<img src="Boxaweedsite/boite12.jpg" onclick="openModal(this)">
-
-</div>
+  <div class="bande-defilante" id="bandeDefilante">
+    <img src="Boxaweedsite/boite1.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite2.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite3.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite4.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite5.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite6.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite7.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite8.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite9.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite10.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite11.jpg" onclick="openModal(this)">
+    <img src="Boxaweedsite/boite12.jpg" onclick="openModal(this)">
+  </div>
 </div>
 
+<!-- BOUTON BOUTIQUE ET INSTAGRAM -->
 <div class="social-boutique">
-
-<button onclick="toggleBoutique()">
-Ma Boutique
-</button>
-
-<a href="https://www.instagram.com/boxaweed" target="_blank">
-<img src="Boxaweedsite/logoinsta.png">
-</a>
-
+  <button onclick="toggleBoutique()">Ma Boutique</button>
+  <a href="https://www.instagram.com/boxaweed" target="_blank">
+    <img src="Boxaweedsite/logoinsta.png">
+  </a>
 </div>
 
+<!-- BOUTIQUE -->
 <section id="boutique">
 
-<!-- BOUTIQUE COMPLETE INCHANGEE -->
-<!-- (tes produits 37, 38, 36 avec produit1 à 15 restent exactement identiques) -->
+<!-- N°37 -->
+<div class="produit">
+<h3>Boxaweed N°37</h3>
+<p><strong>Prix :</strong> 65€</p>
+<p><strong>Dimensions :</strong> 16cm × 16cm × 15,5cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>Tiroir au fond patchwork, panaché total des essences pour un effet Burberry ultra élégant.</p>
+
+<img src="Boxaweedsite/produit1.jpg" id="main1" class="modal-main" onclick="openModal(this)">
+<div class="miniatures">
+  <img src="Boxaweedsite/produit1.jpg" onclick="changeImage('main1',this)">
+  <img src="Boxaweedsite/produit2.jpg" onclick="changeImage('main1',this)">
+  <img src="Boxaweedsite/produit3.jpg" onclick="changeImage('main1',this)">
+  <img src="Boxaweedsite/produit4.jpg" onclick="changeImage('main1',this)">
+  <img src="Boxaweedsite/produit5.jpg" onclick="changeImage('main1',this)">
+</div>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/65')">Commander</button>
+</div>
+
+<!-- N°38 -->
+<div class="produit">
+<h3>Boxaweed N°38</h3>
+<p><strong>Prix :</strong> 85€</p>
+<p><strong>Dimensions :</strong> 17,5cm × 17,5cm × 24cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>2 tiroirs au fond patchwork, 1 gun à tasser, plateau pliant, 2 petits verres à shoot, transportable facilement.</p>
+
+<img src="Boxaweedsite/produit6.jpg" id="main2" class="modal-main" onclick="openModal(this)">
+<div class="miniatures">
+  <img src="Boxaweedsite/produit6.jpg" onclick="changeImage('main2',this)">
+  <img src="Boxaweedsite/produit7.jpg" onclick="changeImage('main2',this)">
+  <img src="Boxaweedsite/produit8.jpg" onclick="changeImage('main2',this)">
+  <img src="Boxaweedsite/produit9.jpg" onclick="changeImage('main2',this)">
+  <img src="Boxaweedsite/produit10.jpg" onclick="changeImage('main2',this)">
+</div>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/85')">Commander</button>
+</div>
+
+<!-- N°36 -->
+<div class="produit">
+<h3>Boxaweed N°36</h3>
+<p><strong>Prix :</strong> 75€</p>
+<p><strong>Dimensions :</strong> 18,5cm × 18,5cm × 27cm</p>
+<p><strong>Essences :</strong> Chêne, sepo, cèdre</p>
+<p>Grand tiroir, 2 petits pots incorporés dans les ouvertures papillons.</p>
+
+<img src="Boxaweedsite/produit11.jpg" id="main3" class="modal-main" onclick="openModal(this)">
+<div class="miniatures">
+  <img src="Boxaweedsite/produit11.jpg" onclick="changeImage('main3',this)">
+  <img src="Boxaweedsite/produit12.jpg" onclick="changeImage('main3',this)">
+  <img src="Boxaweedsite/produit13.jpg" onclick="changeImage('main3',this)">
+  <img src="Boxaweedsite/produit14.jpg" onclick="changeImage('main3',this)">
+  <img src="Boxaweedsite/produit15.jpg" onclick="changeImage('main3',this)">
+</div>
+<button onclick="window.open('https://www.paypal.com/paypalme/ntafforeau/75')">Commander</button>
+</div>
 
 </section>
 
+<!-- YOUTUBE -->
 <div id="youtube" class="youtube">
-
-<iframe src="https://www.youtube.com/embed/AR4yD9GrbuM" allowfullscreen>
-</iframe>
-
+<iframe src="https://www.youtube.com/embed/AR4yD9GrbuM" allowfullscreen></iframe>
 </div>
 
+<!-- MODAL -->
 <div id="imageModal" onclick="closeModal()">
-
 <span id="closeModal">&times;</span>
-
 <img id="modalImg">
-
 </div>
 
-<footer>
-Boxaweed 2026®️
-</footer>
+<footer>Boxaweed 2026®️</footer>
 
 <script>
-
 function toggleMenu(){
-let menu=document.getElementById("menuHamburger");
-menu.style.display=(menu.style.display==="block")?"none":"block";
+  let menu=document.getElementById("menuHamburger");
+  menu.style.display=(menu.style.display==="block")?"none":"block";
 }
-
 function toggleCreations(){
-let section=document.getElementById("creations");
-section.style.display=(section.style.display==="block")?"none":"block";
+  let section=document.getElementById("creations");
+  section.style.display=(section.style.display==="block")?"none":"block";
 }
-
 function toggleBoutique(){
-let section=document.getElementById("boutique");
-section.style.display=(section.style.display==="block")?"none":"block";
+  let section=document.getElementById("boutique");
+  section.style.display=(section.style.display==="block")?"none":"block";
 }
-
 function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
-
 function openModal(img){
-document.getElementById("imageModal").style.display="flex";
-document.getElementById("modalImg").src=img.src;
+  document.getElementById("imageModal").style.display="flex";
+  document.getElementById("modalImg").src=img.src;
 }
-
 function closeModal(){
-document.getElementById("imageModal").style.display="none";
+  document.getElementById("imageModal").style.display="none";
 }
-
 function changeImage(mainId,element){
-document.getElementById(mainId).src=element.src;
+  document.getElementById(mainId).src=element.src;
 }
 
+/* ===== AUTO SCROLL BANDE ===== */
 const bande=document.getElementById('bandeDefilante');
-
 let scrollAmount=0;
-
 function autoScroll(){
-
-scrollAmount+=0.5;
-
-if(scrollAmount>=bande.scrollWidth/2){
-
-scrollAmount=0;
-
+  scrollAmount+=0.5;
+  if(scrollAmount>=bande.scrollWidth/2){
+    scrollAmount=0;
+  }
+  bande.parentElement.scrollLeft=scrollAmount;
+  requestAnimationFrame(autoScroll);
 }
-
-bande.parentElement.scrollLeft=scrollAmount;
-
-requestAnimationFrame(autoScroll);
-
-}
-
 autoScroll();
-
 </script>
 
 </body>
-</html>
+  </html>
